@@ -1,0 +1,45 @@
+//
+//  TimGameLib_Prefix.pch
+//  TimGameLib
+//
+//  Created by Tim Brier on 25/09/2014.
+//  Copyright (c) 2014 tbrier. All rights reserved.
+//
+
+#ifndef TimGameLib_TimGameLib_Prefix_pch
+#define TimGameLib_TimGameLib_Prefix_pch
+
+
+// =============================================================================
+// Configuration
+// Must be before includes so Debug config is sorted
+// -----------------------------------------------------------------------------
+#if defined(DEBUG) || defined(_DEBUG)
+#define TGL_DEBUG 1
+#else
+#define TGL_DEBUG 0
+#endif
+
+#if defined(_WIN64)
+#define TGL_WINDOWS  1
+#elif defined(__APPLE__) && defined(__MACH__)
+#define TGL_MAC      1
+#else
+#error Unsupported platform
+#endif
+
+// =============================================================================
+// Codepath switches
+// -----------------------------------------------------------------------------
+// SFML has it's own system to limit framerate but it is pretty inaccurate
+// When set to 60fps I'm normally seeing 56-57fps
+// However with my method the game is constantly updating and spamming the CPU
+// Use this switch to alternate between my vsync and SFMLs vsync
+#define USE_SFML_VSYNC 1
+
+// =============================================================================
+// Include Files
+// -----------------------------------------------------------------------------
+#include "Macros.hpp"
+
+#endif

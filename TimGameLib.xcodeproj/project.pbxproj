@@ -1,0 +1,706 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2296E7641AD580290079CF6F /* CTextMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2251F4691A7D611500B7628B /* CTextMenu.cpp */; };
+		2296E7651AD580290079CF6F /* CDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDBEF1A2BBC6600775A51 /* CDrawable.cpp */; };
+		2296E7661AD580290079CF6F /* CColour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170019F291B100BF72D6 /* CColour.cpp */; };
+		2296E7671AD580290079CF6F /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2247444519D5F6C80017EE1F /* Main.cpp */; };
+		2296E7681AD580290079CF6F /* XMLInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22F8593719E946E000A1002C /* XMLInterpreter.cpp */; };
+		2296E7691AD580290079CF6F /* GameOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FC77F919E1917A000A507F /* GameOptions.cpp */; };
+		2296E76A1AD580290079CF6F /* CLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22F8593219E88DA800A1002C /* CLine.cpp */; };
+		2296E76B1AD580290079CF6F /* DebugOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FC77F619E19144000A507F /* DebugOptions.cpp */; };
+		2296E76C1AD580290079CF6F /* CTextureBank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FC77D419E033C1000A507F /* CTextureBank.cpp */; };
+		2296E76D1AD580290079CF6F /* TextUtilties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2250710E19D4745B00F1179D /* TextUtilties.cpp */; };
+		2296E76E1AD580290079CF6F /* CollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2266696619FFC84D00BB750D /* CollisionHandler.cpp */; };
+		2296E76F1AD580290079CF6F /* CWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170619F292C300BF72D6 /* CWindow.cpp */; };
+		2296E7701AD580290079CF6F /* CSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267171519F2957600BF72D6 /* CSprite.cpp */; };
+		2296E7711AD580290079CF6F /* CView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226669691A01097D00BB750D /* CView.cpp */; };
+		2296E7721AD580290079CF6F /* CVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226669721A03B34200BB750D /* CVertex.cpp */; };
+		2296E7731AD580290079CF6F /* CFloatRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E8816819F299D10053D142 /* CFloatRect.cpp */; };
+		2296E7741AD580290079CF6F /* CImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E8815A19F297590053D142 /* CImage.cpp */; };
+		2296E7751AD580290079CF6F /* CFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170919F293C900BF72D6 /* CFont.cpp */; };
+		2296E7761AD580290079CF6F /* CTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267171B19F2960E00BF72D6 /* CTexture.cpp */; };
+		2296E7771AD580290079CF6F /* SystemUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2218B5F919D3143E002A2EB7 /* SystemUtilities.mm */; };
+		2296E7781AD580290079CF6F /* CText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170C19F2943100BF72D6 /* CText.cpp */; };
+		2296E7791AD580290079CF6F /* CCircleShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2278E2EE1A9648EB006D95C1 /* CCircleShape.cpp */; };
+		2296E77A1AD580290079CF6F /* CMusic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E8815D19F2979C0053D142 /* CMusic.cpp */; };
+		2296E77B1AD580290079CF6F /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FC77DD19E04417000A507F /* pugixml.cpp */; };
+		2296E77C1AD580290079CF6F /* CTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E8816C19F2A5E70053D142 /* CTime.cpp */; };
+		2296E77D1AD580290079CF6F /* CClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170F19F294A200BF72D6 /* CClock.cpp */; };
+		2296E77E1AD580290079CF6F /* CGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 222AEBD019D5BC690057F737 /* CGame.cpp */; };
+		2296E77F1AD580290079CF6F /* CConvexShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267171819F295C700BF72D6 /* CConvexShape.cpp */; };
+		2296E7821AD580290079CF6F /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2218B5FF19D31462002A2EB7 /* sansation.ttf */; };
+		2296E7831AD580290079CF6F /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2278E2F11A9A3ACF006D95C1 /* config.xml */; };
+		2296E7921AD582DD0079CF6F /* CColour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170019F291B100BF72D6 /* CColour.cpp */; };
+		2296E7931AD582E60079CF6F /* CWindow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170619F292C300BF72D6 /* CWindow.cpp */; };
+		2296E7941AD582EB0079CF6F /* CFont.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170919F293C900BF72D6 /* CFont.cpp */; };
+		2296E7951AD582F00079CF6F /* CText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170C19F2943100BF72D6 /* CText.cpp */; };
+		2296E7961AD582F40079CF6F /* CClock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170F19F294A200BF72D6 /* CClock.cpp */; };
+		2296E7971AD582F90079CF6F /* CSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267171519F2957600BF72D6 /* CSprite.cpp */; };
+		2296E7981AD582FC0079CF6F /* CConvexShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267171819F295C700BF72D6 /* CConvexShape.cpp */; };
+		2296E7991AD582FF0079CF6F /* CTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267171B19F2960E00BF72D6 /* CTexture.cpp */; };
+		2296E79A1AD583030079CF6F /* CImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E8815A19F297590053D142 /* CImage.cpp */; };
+		2296E79B1AD583050079CF6F /* CMusic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E8815D19F2979C0053D142 /* CMusic.cpp */; };
+		2296E79C1AD5830B0079CF6F /* CFloatRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E8816819F299D10053D142 /* CFloatRect.cpp */; };
+		2296E79D1AD583110079CF6F /* CTime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22E8816C19F2A5E70053D142 /* CTime.cpp */; };
+		2296E79E1AD583150079CF6F /* CView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226669691A01097D00BB750D /* CView.cpp */; };
+		2296E79F1AD583180079CF6F /* CVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 226669721A03B34200BB750D /* CVertex.cpp */; };
+		2296E7A01AD5831C0079CF6F /* CDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDBEF1A2BBC6600775A51 /* CDrawable.cpp */; };
+		2296E7A11AD583200079CF6F /* CCircleShape.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2278E2EE1A9648EB006D95C1 /* CCircleShape.cpp */; };
+		2296E7A21AD5832B0079CF6F /* pugixml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FC77DD19E04417000A507F /* pugixml.cpp */; };
+		2296E7A31AD583300079CF6F /* SystemUtilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2218B5F919D3143E002A2EB7 /* SystemUtilities.mm */; };
+		2296E7A41AD583340079CF6F /* TextUtilties.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2250710E19D4745B00F1179D /* TextUtilties.cpp */; };
+		2296E7A51AD583390079CF6F /* CGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 222AEBD019D5BC690057F737 /* CGame.cpp */; };
+		2296E7A71AD583480079CF6F /* CTextureBank.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FC77D419E033C1000A507F /* CTextureBank.cpp */; };
+		2296E7A81AD5834D0079CF6F /* DebugOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FC77F619E19144000A507F /* DebugOptions.cpp */; };
+		2296E7A91AD583530079CF6F /* GameOptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22FC77F919E1917A000A507F /* GameOptions.cpp */; };
+		2296E7AA1AD583580079CF6F /* CLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22F8593219E88DA800A1002C /* CLine.cpp */; };
+		2296E7AB1AD5835B0079CF6F /* XMLInterpreter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22F8593719E946E000A1002C /* XMLInterpreter.cpp */; };
+		2296E7AC1AD5835F0079CF6F /* CollisionHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2266696619FFC84D00BB750D /* CollisionHandler.cpp */; };
+		2296E7AD1AD583630079CF6F /* CTextMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2251F4691A7D611500B7628B /* CTextMenu.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		2218B5F519D31409002A2EB7 /* TimGameLib-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TimGameLib-Info.plist"; path = "MacResources/TimGameLib-Info.plist"; sourceTree = SOURCE_ROOT; };
+		2218B5F819D3143E002A2EB7 /* SystemUtilities.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SystemUtilities.hpp; sourceTree = "<group>"; };
+		2218B5F919D3143E002A2EB7 /* SystemUtilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SystemUtilities.mm; sourceTree = "<group>"; };
+		2218B5FF19D31462002A2EB7 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sansation.ttf; path = Data/sansation.ttf; sourceTree = SOURCE_ROOT; };
+		222AEBD019D5BC690057F737 /* CGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CGame.cpp; sourceTree = "<group>"; };
+		222AEBD119D5BC690057F737 /* CGame.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CGame.hpp; sourceTree = "<group>"; };
+		2247444519D5F6C80017EE1F /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		2250710E19D4745B00F1179D /* TextUtilties.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TextUtilties.cpp; sourceTree = "<group>"; };
+		2250710F19D4745B00F1179D /* TextUtilties.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextUtilties.hpp; sourceTree = "<group>"; };
+		2250711219D4C88C00F1179D /* TimGameLib_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimGameLib_Prefix.pch; sourceTree = "<group>"; };
+		2250711319D4CA3F00F1179D /* Macros.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Macros.hpp; sourceTree = "<group>"; };
+		2251F4691A7D611500B7628B /* CTextMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTextMenu.cpp; sourceTree = "<group>"; };
+		2251F46A1A7D611500B7628B /* CTextMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CTextMenu.hpp; sourceTree = "<group>"; };
+		2266696619FFC84D00BB750D /* CollisionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionHandler.cpp; sourceTree = "<group>"; };
+		2266696719FFC84D00BB750D /* CollisionHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CollisionHandler.hpp; sourceTree = "<group>"; };
+		226669691A01097D00BB750D /* CView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CView.cpp; sourceTree = "<group>"; };
+		2266696A1A01097D00BB750D /* CView.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CView.hpp; sourceTree = "<group>"; };
+		226669721A03B34200BB750D /* CVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVertex.cpp; sourceTree = "<group>"; };
+		226669731A03B34200BB750D /* CVertex.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CVertex.hpp; sourceTree = "<group>"; };
+		2267170019F291B100BF72D6 /* CColour.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CColour.cpp; sourceTree = "<group>"; };
+		2267170119F291B100BF72D6 /* CColour.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CColour.hpp; sourceTree = "<group>"; };
+		2267170319F2926300BF72D6 /* CVector2.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CVector2.cpp; sourceTree = "<group>"; };
+		2267170419F2926300BF72D6 /* CVector2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CVector2.hpp; sourceTree = "<group>"; };
+		2267170619F292C300BF72D6 /* CWindow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CWindow.cpp; sourceTree = "<group>"; };
+		2267170719F292C300BF72D6 /* CWindow.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CWindow.hpp; sourceTree = "<group>"; };
+		2267170919F293C900BF72D6 /* CFont.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CFont.cpp; sourceTree = "<group>"; };
+		2267170A19F293C900BF72D6 /* CFont.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CFont.hpp; sourceTree = "<group>"; };
+		2267170C19F2943100BF72D6 /* CText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CText.cpp; sourceTree = "<group>"; };
+		2267170D19F2943100BF72D6 /* CText.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CText.hpp; sourceTree = "<group>"; };
+		2267170F19F294A200BF72D6 /* CClock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CClock.cpp; sourceTree = "<group>"; };
+		2267171019F294A200BF72D6 /* CClock.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CClock.hpp; sourceTree = "<group>"; };
+		2267171319F2950E00BF72D6 /* CEvent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CEvent.hpp; sourceTree = "<group>"; };
+		2267171519F2957600BF72D6 /* CSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSprite.cpp; sourceTree = "<group>"; };
+		2267171619F2957600BF72D6 /* CSprite.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CSprite.hpp; sourceTree = "<group>"; };
+		2267171819F295C700BF72D6 /* CConvexShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CConvexShape.cpp; sourceTree = "<group>"; };
+		2267171919F295C700BF72D6 /* CConvexShape.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CConvexShape.hpp; sourceTree = "<group>"; };
+		2267171B19F2960E00BF72D6 /* CTexture.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTexture.cpp; sourceTree = "<group>"; };
+		2267171C19F2960E00BF72D6 /* CTexture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CTexture.hpp; sourceTree = "<group>"; };
+		2278E2EE1A9648EB006D95C1 /* CCircleShape.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CCircleShape.cpp; sourceTree = "<group>"; };
+		2278E2EF1A9648EB006D95C1 /* CCircleShape.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CCircleShape.hpp; sourceTree = "<group>"; };
+		2278E2F11A9A3ACF006D95C1 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = config.xml; path = Data/config.xml; sourceTree = SOURCE_ROOT; };
+		2296E7881AD580290079CF6F /* TimGameLib.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimGameLib.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2296E78E1AD580C50079CF6F /* libTimGameLib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTimGameLib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		229FAC0319DDC997001CEFA6 /* CRenderable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CRenderable.hpp; sourceTree = "<group>"; };
+		229FAC0419DDCA1B001CEFA6 /* CUpdateable.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CUpdateable.hpp; sourceTree = "<group>"; };
+		229FAC0519DDCAB2001CEFA6 /* CMenu.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CMenu.hpp; sourceTree = "<group>"; };
+		22BBDBEF1A2BBC6600775A51 /* CDrawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CDrawable.cpp; sourceTree = "<group>"; };
+		22BBDBF01A2BBC6600775A51 /* CDrawable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CDrawable.hpp; sourceTree = "<group>"; };
+		22E8815A19F297590053D142 /* CImage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CImage.cpp; sourceTree = "<group>"; };
+		22E8815B19F297590053D142 /* CImage.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CImage.hpp; sourceTree = "<group>"; };
+		22E8815D19F2979C0053D142 /* CMusic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CMusic.cpp; sourceTree = "<group>"; };
+		22E8815E19F2979C0053D142 /* CMusic.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CMusic.hpp; sourceTree = "<group>"; };
+		22E8816019F298090053D142 /* CKeyboard.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CKeyboard.hpp; sourceTree = "<group>"; };
+		22E8816119F298380053D142 /* CMouse.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CMouse.hpp; sourceTree = "<group>"; };
+		22E8816819F299D10053D142 /* CFloatRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CFloatRect.cpp; sourceTree = "<group>"; };
+		22E8816919F299D10053D142 /* CFloatRect.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CFloatRect.hpp; sourceTree = "<group>"; };
+		22E8816B19F29E7C0053D142 /* SFMLIntegration.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SFMLIntegration.hpp; sourceTree = "<group>"; };
+		22E8816C19F2A5E70053D142 /* CTime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTime.cpp; sourceTree = "<group>"; };
+		22E8816D19F2A5E70053D142 /* CTime.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CTime.hpp; sourceTree = "<group>"; };
+		22E8816F19F2B0180053D142 /* GameState.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameState.hpp; sourceTree = "<group>"; };
+		22F8593219E88DA800A1002C /* CLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CLine.cpp; sourceTree = "<group>"; };
+		22F8593319E88DA800A1002C /* CLine.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CLine.hpp; sourceTree = "<group>"; };
+		22F8593719E946E000A1002C /* XMLInterpreter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XMLInterpreter.cpp; sourceTree = "<group>"; };
+		22F8593819E946E000A1002C /* XMLInterpreter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = XMLInterpreter.hpp; sourceTree = "<group>"; };
+		22FC77D419E033C1000A507F /* CTextureBank.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTextureBank.cpp; sourceTree = "<group>"; };
+		22FC77D519E033C1000A507F /* CTextureBank.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CTextureBank.hpp; sourceTree = "<group>"; };
+		22FC77DC19E04417000A507F /* pugiconfig.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugiconfig.hpp; sourceTree = "<group>"; };
+		22FC77DD19E04417000A507F /* pugixml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pugixml.cpp; sourceTree = "<group>"; };
+		22FC77DE19E04417000A507F /* pugixml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = pugixml.hpp; sourceTree = "<group>"; };
+		22FC77E019E045EE000A507F /* CGameLocation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CGameLocation.hpp; sourceTree = "<group>"; };
+		22FC77F619E19144000A507F /* DebugOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DebugOptions.cpp; sourceTree = "<group>"; };
+		22FC77F719E19144000A507F /* DebugOptions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DebugOptions.hpp; sourceTree = "<group>"; };
+		22FC77F919E1917A000A507F /* GameOptions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOptions.cpp; sourceTree = "<group>"; };
+		22FC77FA19E1917A000A507F /* GameOptions.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameOptions.hpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2296E7801AD580290079CF6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2296E78B1AD580C50079CF6F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2218B5F619D3143E002A2EB7 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				226716FB19F2911E00BF72D6 /* SFMLIntegration */,
+				22FC77DA19E04417000A507F /* Libraries */,
+				2218B5F819D3143E002A2EB7 /* SystemUtilities.hpp */,
+				2218B5F919D3143E002A2EB7 /* SystemUtilities.mm */,
+				2250710E19D4745B00F1179D /* TextUtilties.cpp */,
+				2250710F19D4745B00F1179D /* TextUtilties.hpp */,
+				2250711219D4C88C00F1179D /* TimGameLib_Prefix.pch */,
+				2250711319D4CA3F00F1179D /* Macros.hpp */,
+				222AEBD019D5BC690057F737 /* CGame.cpp */,
+				222AEBD119D5BC690057F737 /* CGame.hpp */,
+				2247444519D5F6C80017EE1F /* Main.cpp */,
+				229FAC0319DDC997001CEFA6 /* CRenderable.hpp */,
+				229FAC0419DDCA1B001CEFA6 /* CUpdateable.hpp */,
+				229FAC0519DDCAB2001CEFA6 /* CMenu.hpp */,
+				22FC77D419E033C1000A507F /* CTextureBank.cpp */,
+				22FC77D519E033C1000A507F /* CTextureBank.hpp */,
+				22FC77E019E045EE000A507F /* CGameLocation.hpp */,
+				22FC77F619E19144000A507F /* DebugOptions.cpp */,
+				22FC77F719E19144000A507F /* DebugOptions.hpp */,
+				22FC77F919E1917A000A507F /* GameOptions.cpp */,
+				22FC77FA19E1917A000A507F /* GameOptions.hpp */,
+				22F8593219E88DA800A1002C /* CLine.cpp */,
+				22F8593319E88DA800A1002C /* CLine.hpp */,
+				22F8593719E946E000A1002C /* XMLInterpreter.cpp */,
+				22F8593819E946E000A1002C /* XMLInterpreter.hpp */,
+				22E8816F19F2B0180053D142 /* GameState.hpp */,
+				2266696619FFC84D00BB750D /* CollisionHandler.cpp */,
+				2266696719FFC84D00BB750D /* CollisionHandler.hpp */,
+				2251F4691A7D611500B7628B /* CTextMenu.cpp */,
+				2251F46A1A7D611500B7628B /* CTextMenu.hpp */,
+			);
+			path = Source;
+			sourceTree = SOURCE_ROOT;
+		};
+		226716FB19F2911E00BF72D6 /* SFMLIntegration */ = {
+			isa = PBXGroup;
+			children = (
+				2267170019F291B100BF72D6 /* CColour.cpp */,
+				2267170119F291B100BF72D6 /* CColour.hpp */,
+				2267170319F2926300BF72D6 /* CVector2.cpp */,
+				2267170419F2926300BF72D6 /* CVector2.hpp */,
+				2267170619F292C300BF72D6 /* CWindow.cpp */,
+				2267170719F292C300BF72D6 /* CWindow.hpp */,
+				2267170919F293C900BF72D6 /* CFont.cpp */,
+				2267170A19F293C900BF72D6 /* CFont.hpp */,
+				2267170C19F2943100BF72D6 /* CText.cpp */,
+				2267170D19F2943100BF72D6 /* CText.hpp */,
+				2267170F19F294A200BF72D6 /* CClock.cpp */,
+				2267171019F294A200BF72D6 /* CClock.hpp */,
+				2267171319F2950E00BF72D6 /* CEvent.hpp */,
+				2267171519F2957600BF72D6 /* CSprite.cpp */,
+				2267171619F2957600BF72D6 /* CSprite.hpp */,
+				2267171819F295C700BF72D6 /* CConvexShape.cpp */,
+				2267171919F295C700BF72D6 /* CConvexShape.hpp */,
+				2267171B19F2960E00BF72D6 /* CTexture.cpp */,
+				2267171C19F2960E00BF72D6 /* CTexture.hpp */,
+				22E8815A19F297590053D142 /* CImage.cpp */,
+				22E8815B19F297590053D142 /* CImage.hpp */,
+				22E8815D19F2979C0053D142 /* CMusic.cpp */,
+				22E8815E19F2979C0053D142 /* CMusic.hpp */,
+				22E8816019F298090053D142 /* CKeyboard.hpp */,
+				22E8816119F298380053D142 /* CMouse.hpp */,
+				22E8816819F299D10053D142 /* CFloatRect.cpp */,
+				22E8816919F299D10053D142 /* CFloatRect.hpp */,
+				22E8816B19F29E7C0053D142 /* SFMLIntegration.hpp */,
+				22E8816C19F2A5E70053D142 /* CTime.cpp */,
+				22E8816D19F2A5E70053D142 /* CTime.hpp */,
+				226669691A01097D00BB750D /* CView.cpp */,
+				2266696A1A01097D00BB750D /* CView.hpp */,
+				226669721A03B34200BB750D /* CVertex.cpp */,
+				226669731A03B34200BB750D /* CVertex.hpp */,
+				22BBDBEF1A2BBC6600775A51 /* CDrawable.cpp */,
+				22BBDBF01A2BBC6600775A51 /* CDrawable.hpp */,
+				2278E2EE1A9648EB006D95C1 /* CCircleShape.cpp */,
+				2278E2EF1A9648EB006D95C1 /* CCircleShape.hpp */,
+			);
+			path = SFMLIntegration;
+			sourceTree = "<group>";
+		};
+		22C3F3E419D313880043264D = {
+			isa = PBXGroup;
+			children = (
+				22C3F3F019D313880043264D /* TimGameLib */,
+				22C3F3EF19D313880043264D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22C3F3EF19D313880043264D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2296E7881AD580290079CF6F /* TimGameLib.app */,
+				2296E78E1AD580C50079CF6F /* libTimGameLib.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22C3F3F019D313880043264D /* TimGameLib */ = {
+			isa = PBXGroup;
+			children = (
+				2218B5F619D3143E002A2EB7 /* Source */,
+				22C3F3F819D313880043264D /* Resources */,
+				22C3F3F119D313880043264D /* Supporting Files */,
+			);
+			name = TimGameLib;
+			path = SwingGame;
+			sourceTree = "<group>";
+		};
+		22C3F3F119D313880043264D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2218B5F519D31409002A2EB7 /* TimGameLib-Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22C3F3F819D313880043264D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2278E2F11A9A3ACF006D95C1 /* config.xml */,
+				2218B5FF19D31462002A2EB7 /* sansation.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		22FC77DA19E04417000A507F /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				22FC77DB19E04417000A507F /* pugixml */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		22FC77DB19E04417000A507F /* pugixml */ = {
+			isa = PBXGroup;
+			children = (
+				22FC77DC19E04417000A507F /* pugiconfig.hpp */,
+				22FC77DD19E04417000A507F /* pugixml.cpp */,
+				22FC77DE19E04417000A507F /* pugixml.hpp */,
+			);
+			path = pugixml;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2296E78C1AD580C50079CF6F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2296E7621AD580290079CF6F /* TimGameLib app */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2296E7851AD580290079CF6F /* Build configuration list for PBXNativeTarget "TimGameLib app" */;
+			buildPhases = (
+				2296E7631AD580290079CF6F /* Sources */,
+				2296E7801AD580290079CF6F /* Frameworks */,
+				2296E7811AD580290079CF6F /* Resources */,
+				2296E7841AD580290079CF6F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TimGameLib app";
+			productName = SwingGame;
+			productReference = 2296E7881AD580290079CF6F /* TimGameLib.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2296E78D1AD580C50079CF6F /* TimGameLib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2296E78F1AD580C50079CF6F /* Build configuration list for PBXNativeTarget "TimGameLib" */;
+			buildPhases = (
+				2296E78A1AD580C50079CF6F /* Sources */,
+				2296E78B1AD580C50079CF6F /* Frameworks */,
+				2296E78C1AD580C50079CF6F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TimGameLib;
+			productName = TimGameLib;
+			productReference = 2296E78E1AD580C50079CF6F /* libTimGameLib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22C3F3E519D313880043264D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = tbrier;
+			};
+			buildConfigurationList = 22C3F3E819D313880043264D /* Build configuration list for PBXProject "TimGameLib" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 22C3F3E419D313880043264D;
+			productRefGroup = 22C3F3EF19D313880043264D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2296E7621AD580290079CF6F /* TimGameLib app */,
+				2296E78D1AD580C50079CF6F /* TimGameLib */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2296E7811AD580290079CF6F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2296E7821AD580290079CF6F /* sansation.ttf in Resources */,
+				2296E7831AD580290079CF6F /* config.xml in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2296E7841AD580290079CF6F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This shell script simply copies required sfml dylibs/frameworks into the application bundle frameworks folder.\n# If you're using static libraries (which is not recommended) you should remove this script from your project.\n\n# Are we building a project that uses framework or dylibs ?\ncase \"$SFML_BINARY_TYPE\" in\n    DYLIBS)\n        frameworks=\"false\"\n        ;;\n    *)\n        frameworks=\"true\"\n        ;;\nesac\n\n# Echoes to stderr\nerror () # $* message to display\n{\n    echo $* 1>&2\n    exit 2\n}\n\nassert () # $1 is a boolean, $2...N is an error message\n{\n    if [ $# -lt 2 ]\n    then\n        error \"Internal error in assert : not enough args\"\n    fi\n\n    if [ $1 -ne 0 ]\n    then\n        shift\n        error \"$*\"\n    fi\n}\n\nforce_remove () # $1 is a path\n{\n    test $# -eq 1\n    assert $? \"force_remove() requires one parameter\"\n    rm -fr \"$1\"\n    assert $? \"couldn't remove $1\"\n}\n\ncopy () # $1 is a source, $2 is a destination\n{\n    test $# -eq 2\n    assert $? \"copy() requires two parameters\"\n    ditto \"$1\" \"$2\"\n    assert $? \"couldn't copy $1 to $2\"\n}\n\nrequire () # $1 is a SFML module like 'system' or 'audio'\n{\n    dest=\"$BUILT_PRODUCTS_DIR/$PRODUCT_NAME.app/Contents/Frameworks\"\n\n    if [ -z \"$1\" ]\n    then\n        error \"require() requires one parameter!\"\n    else\n        # clean potentially old stuff\n        force_remove \"$dest/libsfml-$1.2.dylib\"\n        force_remove \"$dest/libsfml-$1-d.2.dylib\"\n        force_remove \"$dest/sfml-$1.framework\"\n\n        # copy SFML libraries\n        if [ \"$frameworks\" = \"true\" ]\n        then\n            copy \"/Library/Frameworks/sfml-$1.framework\" \"$dest/sfml-$1.framework\"\n        elif [ \"$SFML_LINK_DYLIBS_SUFFIX\" = \"-d\" ]\n        then\n            copy \"/usr/local/lib/libsfml-$1-d.2.dylib\" \"$dest/libsfml-$1-d.2.dylib\"\n        else\n            copy \"/usr/local/lib/libsfml-$1.2.dylib\" \"$dest/libsfml-$1.2.dylib\"\n        fi\n\n        if [ \"$1\" = \"audio\" ]\n        then\n            # copy sndfile framework too\n            copy \"/Library/Frameworks/sndfile.framework\" \"$dest/sndfile.framework\"\n        fi\n\n        if [ \"$1\" = \"graphics\" ]\n        then\n            # copy freetype framework too\n            copy \"/Library/Frameworks/freetype.framework\" \"$dest/freetype.framework\"\n        fi\n    fi\n}\n\nif [ -n \"$SFML_SYSTEM\" ]\nthen\n    require \"system\"\nfi\n\nif [ -n \"$SFML_AUDIO\" ]\nthen\n    require \"audio\"\nfi\n\nif [ -n \"$SFML_NETWORK\" ]\nthen\n    require \"network\"\nfi\n\nif [ -n \"$SFML_WINDOW\" ]\nthen\n    require \"window\"\nfi\n\nif [ -n \"$SFML_GRAPHICS\" ]\nthen\n    require \"graphics\"\nfi\n\n                ";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2296E7631AD580290079CF6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2296E7641AD580290079CF6F /* CTextMenu.cpp in Sources */,
+				2296E7651AD580290079CF6F /* CDrawable.cpp in Sources */,
+				2296E7661AD580290079CF6F /* CColour.cpp in Sources */,
+				2296E7671AD580290079CF6F /* Main.cpp in Sources */,
+				2296E7681AD580290079CF6F /* XMLInterpreter.cpp in Sources */,
+				2296E7691AD580290079CF6F /* GameOptions.cpp in Sources */,
+				2296E76A1AD580290079CF6F /* CLine.cpp in Sources */,
+				2296E76B1AD580290079CF6F /* DebugOptions.cpp in Sources */,
+				2296E76C1AD580290079CF6F /* CTextureBank.cpp in Sources */,
+				2296E76D1AD580290079CF6F /* TextUtilties.cpp in Sources */,
+				2296E76E1AD580290079CF6F /* CollisionHandler.cpp in Sources */,
+				2296E76F1AD580290079CF6F /* CWindow.cpp in Sources */,
+				2296E7701AD580290079CF6F /* CSprite.cpp in Sources */,
+				2296E7711AD580290079CF6F /* CView.cpp in Sources */,
+				2296E7721AD580290079CF6F /* CVertex.cpp in Sources */,
+				2296E7731AD580290079CF6F /* CFloatRect.cpp in Sources */,
+				2296E7741AD580290079CF6F /* CImage.cpp in Sources */,
+				2296E7751AD580290079CF6F /* CFont.cpp in Sources */,
+				2296E7761AD580290079CF6F /* CTexture.cpp in Sources */,
+				2296E7771AD580290079CF6F /* SystemUtilities.mm in Sources */,
+				2296E7781AD580290079CF6F /* CText.cpp in Sources */,
+				2296E7791AD580290079CF6F /* CCircleShape.cpp in Sources */,
+				2296E77A1AD580290079CF6F /* CMusic.cpp in Sources */,
+				2296E77B1AD580290079CF6F /* pugixml.cpp in Sources */,
+				2296E77C1AD580290079CF6F /* CTime.cpp in Sources */,
+				2296E77D1AD580290079CF6F /* CClock.cpp in Sources */,
+				2296E77E1AD580290079CF6F /* CGame.cpp in Sources */,
+				2296E77F1AD580290079CF6F /* CConvexShape.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2296E78A1AD580C50079CF6F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2296E7AB1AD5835B0079CF6F /* XMLInterpreter.cpp in Sources */,
+				2296E7A01AD5831C0079CF6F /* CDrawable.cpp in Sources */,
+				2296E7921AD582DD0079CF6F /* CColour.cpp in Sources */,
+				2296E7A81AD5834D0079CF6F /* DebugOptions.cpp in Sources */,
+				2296E7991AD582FF0079CF6F /* CTexture.cpp in Sources */,
+				2296E7931AD582E60079CF6F /* CWindow.cpp in Sources */,
+				2296E7AA1AD583580079CF6F /* CLine.cpp in Sources */,
+				2296E79F1AD583180079CF6F /* CVertex.cpp in Sources */,
+				2296E7A71AD583480079CF6F /* CTextureBank.cpp in Sources */,
+				2296E79C1AD5830B0079CF6F /* CFloatRect.cpp in Sources */,
+				2296E7981AD582FC0079CF6F /* CConvexShape.cpp in Sources */,
+				2296E7AC1AD5835F0079CF6F /* CollisionHandler.cpp in Sources */,
+				2296E7A91AD583530079CF6F /* GameOptions.cpp in Sources */,
+				2296E7A11AD583200079CF6F /* CCircleShape.cpp in Sources */,
+				2296E7951AD582F00079CF6F /* CText.cpp in Sources */,
+				2296E7A31AD583300079CF6F /* SystemUtilities.mm in Sources */,
+				2296E7961AD582F40079CF6F /* CClock.cpp in Sources */,
+				2296E7971AD582F90079CF6F /* CSprite.cpp in Sources */,
+				2296E79D1AD583110079CF6F /* CTime.cpp in Sources */,
+				2296E7AD1AD583630079CF6F /* CTextMenu.cpp in Sources */,
+				2296E79E1AD583150079CF6F /* CView.cpp in Sources */,
+				2296E7A21AD5832B0079CF6F /* pugixml.cpp in Sources */,
+				2296E79A1AD583030079CF6F /* CImage.cpp in Sources */,
+				2296E7941AD582EB0079CF6F /* CFont.cpp in Sources */,
+				2296E7A41AD583340079CF6F /* TextUtilties.cpp in Sources */,
+				2296E79B1AD583050079CF6F /* CMusic.cpp in Sources */,
+				2296E7A51AD583390079CF6F /* CGame.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		2296E7861AD580290079CF6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PREFIX_HEADER = Source/TimGameLib_Prefix.pch;
+				INFOPLIST_FILE = "MacResources/TimGameLib-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = TimGameLib;
+			};
+			name = Debug;
+		};
+		2296E7871AD580290079CF6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				GCC_PREFIX_HEADER = Source/TimGameLib_Prefix.pch;
+				INFOPLIST_FILE = "MacResources/TimGameLib-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				PRODUCT_NAME = TimGameLib;
+			};
+			name = Release;
+		};
+		2296E7901AD580C50079CF6F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = YES;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREFIX_HEADER = Source/TimGameLib_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		2296E7911AD580C50079CF6F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PREFIX_HEADER = Source/TimGameLib_Prefix.pch;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		22C3F40119D313880043264D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(inherited)",
+				);
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SDKROOT = macosx;
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = FRAMEWORKS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Debug;
+		};
+		22C3F40219D313880043264D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks/,
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include/,
+					"$(inherited)",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib/,
+					"$(inherited)",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"$(SFML_SYSTEM)",
+					"$(SFML_WINDOW)",
+					"$(SFML_GRAPHICS)",
+					"$(SFML_AUDIO)",
+					"$(SFML_NETWORK)",
+				);
+				SDKROOT = macosx;
+				SFML_AUDIO = "$(SFML_LINK_PREFIX) sfml-audio$(SFML_LINK_SUFFIX)";
+				SFML_BINARY_TYPE = FRAMEWORKS;
+				SFML_GRAPHICS = "$(SFML_LINK_PREFIX) sfml-graphics$(SFML_LINK_SUFFIX)";
+				SFML_LINK_DYLIBS_PREFIX = "-l";
+				SFML_LINK_DYLIBS_SUFFIX = "";
+				SFML_LINK_FRAMEWORKS_PREFIX = "-framework";
+				SFML_LINK_FRAMEWORKS_SUFFIX = "";
+				SFML_LINK_PREFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_PREFIX)";
+				SFML_LINK_SUFFIX = "$(SFML_LINK_$(SFML_BINARY_TYPE)_SUFFIX)";
+				SFML_NETWORK = "";
+				SFML_SYSTEM = "$(SFML_LINK_PREFIX) sfml-system$(SFML_LINK_SUFFIX)";
+				SFML_WINDOW = "$(SFML_LINK_PREFIX) sfml-window$(SFML_LINK_SUFFIX)";
+				SUPPORTED_PLATFORMS = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2296E7851AD580290079CF6F /* Build configuration list for PBXNativeTarget "TimGameLib app" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2296E7861AD580290079CF6F /* Debug */,
+				2296E7871AD580290079CF6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2296E78F1AD580C50079CF6F /* Build configuration list for PBXNativeTarget "TimGameLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2296E7901AD580C50079CF6F /* Debug */,
+				2296E7911AD580C50079CF6F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22C3F3E819D313880043264D /* Build configuration list for PBXProject "TimGameLib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22C3F40119D313880043264D /* Debug */,
+				22C3F40219D313880043264D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 22C3F3E519D313880043264D /* Project object */;
+}
