@@ -40,37 +40,39 @@ struct SUpdateableRegistrationRequest
 class CGame
 {
 public:
+    static CGame * Get();
+    
     CGame();
     ~CGame();
     
     // Initialise the game
-    void Init();
+    virtual void Init(int initialGameLocation);
     // Enter the main loop, returns program exit code
-    int Run();
+    virtual int Run();
     // Cleanup before quitting
-    void Cleanup();
+    virtual void Cleanup();
     
     // Exit the game
-    static void ExitGame();
+    virtual void ExitGame();
     
     // Set/unset GameState flags
-    static void SetGameState       (EGameState theState);
-    static void UnsetGameState     (EGameState theState);
+    virtual void SetGameState       (EGameState theState);
+    virtual void UnsetGameState     (EGameState theState);
     // Returns true only if the current gamestate has all the given flags
-    static bool HasAllGameStates   (EGameState theState);
+    virtual bool HasAllGameStates   (EGameState theState);
     
     // Register/unregister updatable/renderables
-    static void RegisterUpdateable  (CUpdateable    *theUpdateable);
-    static void RegisterRenderable  (CRenderable    *theRenderable);
-    static void UnregisterUpdateable(CUpdateable    *theUpdateable);
-    static void UnregisterRenderable(CRenderable    *theRenderable);
+    virtual void RegisterUpdateable  (CUpdateable    *theUpdateable);
+    virtual void RegisterRenderable  (CRenderable    *theRenderable);
+    virtual void UnregisterUpdateable(CUpdateable    *theUpdateable);
+    virtual void UnregisterRenderable(CRenderable    *theRenderable);
     
     // Go to a game location
-    static void GoToLocation(EGameLocation theLocation,
+    virtual void GoToLocation(int theLocation,
                              std::string filename = std::string());
     
     static CDebugHelper * GetDebugHelper();
-private:
+protected:
     // Process all events recieved this cylce
     void ProcessEvents();
     // Update all CUpdatables registered
@@ -94,19 +96,22 @@ private:
     // The code returned on program exit
     int mExitCode;
     // Has an exit been requested
-    static bool smExitRequested;
+    bool mExitRequested;
     
     // The current game state
-    static EGameState smGameState;
+    EGameState mGameState;
     
     // Updateable and renderable lists
-    static std::list<CUpdateable *> smTheUpdateables;
-    static std::list<SUpdateableRegistrationRequest>
-                                    smUpdateableRegistrationRequests;
-    static std::list<CRenderable *> smTheRenderables;
+    std::list<CUpdateable *> mTheUpdateables;
+    std::list<SUpdateableRegistrationRequest>
+                                    mUpdateableRegistrationRequests;
+    std::list<CRenderable *> mTheRenderables;
     
     // The current game location (menu/level)
-    static CGameLocation *smCurrentLocation;
+    CGameLocation *mCurrentLocation;
+    
+    // Singleton instance
+    static CGame *smInstance;
 };
 
 

@@ -17,15 +17,9 @@
 #include <sstream>
 
 // =============================================================================
-// Static members
+// Static Members
 // -----------------------------------------------------------------------------
-bool                        CGame::smExitRequested = false;
-EGameState                  CGame::smGameState = kGameStateFrontEnd;
-std::list<CUpdateable *>    CGame::smTheUpdateables;
-std::list<SUpdateableRegistrationRequest>
-                            CGame::smUpdateableRegistrationRequests;
-std::list<CRenderable *>    CGame::smTheRenderables;
-CGameLocation               *CGame::smCurrentLocation = NULL;
+CGame * CGame::smInstance = NULL;
 
 // =============================================================================
 // Non member variables
@@ -35,18 +29,32 @@ CDebugHelper *theDebugHelper;
 #endif
 
 // =============================================================================
+// Singleton Accessor
+// -----------------------------------------------------------------------------
+CGame * CGame::Get()
+{
+    return smInstance;
+}
+
+// =============================================================================
 // CGame constructor/destructor
 // -----------------------------------------------------------------------------
-CGame::CGame() :  mWindowTitle("Game"),
+CGame::CGame() :            mWindowTitle("Game"),
                             mWindow(NULL),
                             mFPS(0),
                             mShouldSkipUpdateFrame(false),
 #if !USE_SFML_VSYNC
                             mUPS(0),
 #endif
-                            mExitCode(EXIT_SUCCESS)
+                            mExitCode(EXIT_SUCCESS),
+                            mExitRequested(false),
+                            mGameState(kGameStateFrontEnd),
+                            mCurrentLocation(NULL)
 {
-    
+    if (smInstance == NULL)
+    {
+        smInstance = this;
+    }
 }
 
 CGame::~CGame()
@@ -58,7 +66,7 @@ CGame::~CGame()
 // CGame::Init
 // Initialise the game
 // -----------------------------------------------------------------------------
-void CGame::Init()
+void CGame::Init(int initialGameLocation)
 {
     // Initialise game options
     GameOptions::Init();
@@ -120,8 +128,8 @@ void CGame::Init()
         DEBUG_LOG("View aspect ratio doesn't match window aspect ratio");
     }
     
-    // Enter the front end menu
-    GoToLocation(kGameLocationDummy);
+    // Enter the initial location
+    GoToLocation(initialGameLocation);
     
     // Initialise other systems
     SystemUtilities::Init(mWindow);
@@ -181,7 +189,7 @@ int CGame::Run()
 void CGame::Cleanup()
 {
     SAFE_DELETE(mWindow);
-    SAFE_DELETE(smCurrentLocation);
+    SAFE_DELETE(mCurrentLocation);
 #if TGL_DEBUG
     SAFE_DELETE(theDebugHelper);
 #endif
@@ -196,7 +204,7 @@ void CGame::Cleanup()
 void CGame::ExitGame()
 {
     DEBUG_LOG("Exit requested");
-    smExitRequested = true;
+    mExitRequested = true;
 }
 
 // =============================================================================
@@ -205,7 +213,7 @@ void CGame::ExitGame()
 // -----------------------------------------------------------------------------
 void CGame::SetGameState(EGameState theState)
 {
-    smGameState = static_cast<EGameState>(smGameState | theState);
+    mGameState = static_cast<EGameState>(mGameState | theState);
 }
 
 // =============================================================================
@@ -214,7 +222,7 @@ void CGame::SetGameState(EGameState theState)
 // -----------------------------------------------------------------------------
 void CGame::UnsetGameState(EGameState theState)
 {
-    smGameState = static_cast<EGameState>(smGameState & ~theState);
+    mGameState = static_cast<EGameState>(mGameState & ~theState);
 }
 
 // =============================================================================
@@ -223,7 +231,7 @@ void CGame::UnsetGameState(EGameState theState)
 // -----------------------------------------------------------------------------
 bool CGame::HasAllGameStates(EGameState theState)
 {
-    EGameState theResult = static_cast<EGameState>(smGameState & theState);
+    EGameState theResult = static_cast<EGameState>(mGameState & theState);
     return theResult == theState;
 }
 
@@ -237,14 +245,14 @@ void CGame::RegisterUpdateable(CUpdateable *theUpdateable)
     // to be added after the current update cycle
     if (!HasAllGameStates(kGameStateUpdating))
     {
-        smTheUpdateables.push_back(theUpdateable);
+        mTheUpdateables.push_back(theUpdateable);
     }
     else
     {
         SUpdateableRegistrationRequest theRequest;
         theRequest.mShouldRegister = true;
         theRequest.mUpdateable = theUpdateable;
-        smUpdateableRegistrationRequests.push_back(theRequest);
+        mUpdateableRegistrationRequests.push_back(theRequest);
     }
 }
 
@@ -254,7 +262,7 @@ void CGame::RegisterUpdateable(CUpdateable *theUpdateable)
 // -----------------------------------------------------------------------------
 void CGame::RegisterRenderable(CRenderable *theRenderable)
 {
-    smTheRenderables.push_back(theRenderable);
+    mTheRenderables.push_back(theRenderable);
 }
 
 // =============================================================================
@@ -267,14 +275,14 @@ void CGame::UnregisterUpdateable(CUpdateable *theUpdateable)
     // to be removed after the current update cycle
     if (!HasAllGameStates(kGameStateUpdating))
     {
-        smTheUpdateables.remove(theUpdateable);
+        mTheUpdateables.remove(theUpdateable);
     }
     else
     {
         SUpdateableRegistrationRequest theRequest;
         theRequest.mShouldRegister = false;
         theRequest.mUpdateable = theUpdateable;
-        smUpdateableRegistrationRequests.push_back(theRequest);
+        mUpdateableRegistrationRequests.push_back(theRequest);
     }
 }
 
@@ -284,7 +292,7 @@ void CGame::UnregisterUpdateable(CUpdateable *theUpdateable)
 // -----------------------------------------------------------------------------
 void CGame::UnregisterRenderable(CRenderable *theRenderable)
 {
-    smTheRenderables.remove(theRenderable);
+    mTheRenderables.remove(theRenderable);
 }
 
 // =============================================================================
@@ -303,30 +311,30 @@ CDebugHelper * CGame::GetDebugHelper()
 // CGame::GoToLocation
 // Go to a game location (level/menu)
 // -----------------------------------------------------------------------------
-void CGame::GoToLocation(EGameLocation theLocation,
-                              std::string filename /* = std::string() */)
+void CGame::GoToLocation(int theLocation,
+                         std::string filename /* = std::string() */)
 {
     // If we're already in a location leave it
-    if (smCurrentLocation != NULL)
+    if (mCurrentLocation != NULL)
     {
-        smCurrentLocation->Exit();
-        SAFE_DELETE(smCurrentLocation);
+        mCurrentLocation->Exit();
+        SAFE_DELETE(mCurrentLocation);
     }
     
     switch (theLocation)
     {
         case kGameLocationDummy:
             DEBUG_LOG("Dummy location requested");
-            smCurrentLocation = new CDummyGameLocation();
+            mCurrentLocation = new CDummyGameLocation();
             break;
             
         default:
             DEBUG_LOG("Unimplemented game location - going to dummy location");
-            smCurrentLocation = new CDummyGameLocation();
+            mCurrentLocation = new CDummyGameLocation();
             break;
     }
     
-    smCurrentLocation->Enter();
+    mCurrentLocation->Enter();
 }
 
 // =============================================================================
@@ -373,14 +381,14 @@ void CGame::ProcessEvents()
                 break;
 
             case CEvent::GainedFocus:
-                smCurrentLocation->ReactToFocusGained();
+                mCurrentLocation->ReactToFocusGained();
                 
                 // Skip a frame when we gain focus
                 mShouldSkipUpdateFrame = true;
                 break;
 
             case CEvent::LostFocus:
-                smCurrentLocation->ReactToFocusLost();
+                mCurrentLocation->ReactToFocusLost();
                 break;
                 
             default:
@@ -389,7 +397,7 @@ void CGame::ProcessEvents()
     }
     
     // React to exit requests
-    if (smExitRequested)
+    if (mExitRequested)
     {
         mWindow->close();
     }
@@ -427,29 +435,29 @@ void CGame::Update(CTime elapsedTime)
 #endif
     
     // Iterate through the registered updateables, updating each in turn
-    FOR_EACH_IN_LIST(CUpdateable *, smTheUpdateables)
+    FOR_EACH_IN_LIST(CUpdateable *, mTheUpdateables)
     {
         // Only update when in an appropriate state
-        if ((*it)->ShouldUpdateForState(smGameState))
+        if ((*it)->ShouldUpdateForState(mGameState))
         {
             (*it)->Update(elapsedTime);
         }
     }
     
     // Add or remove any updateables that were requested this cycle
-    while (!smUpdateableRegistrationRequests.empty())
+    while (!mUpdateableRegistrationRequests.empty())
     {
         SUpdateableRegistrationRequest thisRequest =
-                                    smUpdateableRegistrationRequests.front();
-        smUpdateableRegistrationRequests.pop_front();
+                                    mUpdateableRegistrationRequests.front();
+        mUpdateableRegistrationRequests.pop_front();
         
         if (thisRequest.mShouldRegister)
         {
-            smTheUpdateables.push_back(thisRequest.mUpdateable);
+            mTheUpdateables.push_back(thisRequest.mUpdateable);
         }
         else
         {
-            smTheUpdateables.remove(thisRequest.mUpdateable);
+            mTheUpdateables.remove(thisRequest.mUpdateable);
         }
     }
     
@@ -481,7 +489,7 @@ void CGame::Render()
     mWindow->clear();
     
     // Iterate through all registered renderables, drawing them all
-    FOR_EACH_IN_LIST(CRenderable *, smTheRenderables)
+    FOR_EACH_IN_LIST(CRenderable *, mTheRenderables)
     {
         (*it)->Draw(mWindow);
     }

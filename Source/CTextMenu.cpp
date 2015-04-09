@@ -29,8 +29,8 @@ CTextMenu::CTextMenu(std::string theTitle, CFloatRect theShape)
 void CTextMenu::Enter()
 {
     // Register any updateables and renderables
-    CGame::RegisterUpdateable(this);
-    CGame::RegisterRenderable(this);
+    CGame::Get()->RegisterUpdateable(this);
+    CGame::Get()->RegisterRenderable(this);
     
     mCurrentSelection = 0;
 }
@@ -41,8 +41,8 @@ void CTextMenu::Enter()
 void CTextMenu::Exit()
 {
     // Unregister all updateables and renderables
-    CGame::UnregisterUpdateable(this);
-    CGame::UnregisterRenderable(this);
+    CGame::Get()->UnregisterUpdateable(this);
+    CGame::Get()->UnregisterRenderable(this);
 }
 
 // =============================================================================
