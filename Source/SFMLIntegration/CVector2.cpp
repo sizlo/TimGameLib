@@ -12,6 +12,11 @@
 #include <math.h>
 
 // =============================================================================
+// Constants
+// -----------------------------------------------------------------------------
+#define RAD_TO_DEG 57.2957795131
+
+// =============================================================================
 // CVector2 constructor/destructor
 // -----------------------------------------------------------------------------
 template <typename T>
@@ -79,6 +84,32 @@ template <typename T>
 T CVector2<T>::DotProduct(CVector2<T> rhs)
 {
     return (this->x * rhs.x) + (this->y * rhs.y);
+}
+
+// =============================================================================
+// CVector2::AngleBetween
+// -----------------------------------------------------------------------------
+template <typename T>
+float CVector2<T>::AngleBetween(CVector2<T> rhs)
+{
+    float rads = atan2(this->y - rhs.y, this->x - rhs.x);
+    float degs = rads * RAD_TO_DEG;
+    return degs;
+}
+
+// =============================================================================
+// CVector2::AngleBetween
+// -----------------------------------------------------------------------------
+template <typename T>
+float CVector2<T>::AngleTo(CVector2<T> rhs)
+{
+    float rads = atan2(rhs.y, rhs.x) - atan2(this->y, this->x);
+    if (rads < 0)
+    {
+        rads += 2 * M_PI;
+    }
+    float degs = rads * RAD_TO_DEG;
+    return degs;
 }
 
 // =============================================================================

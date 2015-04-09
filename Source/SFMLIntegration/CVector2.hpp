@@ -37,6 +37,13 @@ public:
     // Get the dot product of this and another vector
     T DotProduct(CVector2<T> rhs);
     
+    // Get the angle between the 2 vectors in degrees
+    float AngleBetween(CVector2<T> rhs);
+    
+    // Get the angle needed to rotate this vector for it to align with a given
+    // vector
+    float AngleTo(CVector2<T> rhs);
+    
     // Get the component of a vector in the given direction
     CVector2<T> GetComponentInDirection(CVector2<T> direction);
 };
