@@ -11,7 +11,6 @@
 // -----------------------------------------------------------------------------
 #include "CTextMenu.hpp"
 #include "CGame.hpp"
-#include "SystemUtilities.hpp"
 
 // =============================================================================
 // CTextMenu constructor
@@ -28,6 +27,8 @@ CTextMenu::CTextMenu(std::string theTitle, CFloatRect theShape)
 // -----------------------------------------------------------------------------
 void CTextMenu::Enter()
 {
+    CMenu::Enter();
+    
     // Register any updateables and renderables
     CGame::Get()->RegisterUpdateable(this);
     CGame::Get()->RegisterRenderable(this);
@@ -40,6 +41,8 @@ void CTextMenu::Enter()
 // -----------------------------------------------------------------------------
 void CTextMenu::Exit()
 {
+    CMenu::Exit();
+    
     // Unregister all updateables and renderables
     CGame::Get()->UnregisterUpdateable(this);
     CGame::Get()->UnregisterRenderable(this);
@@ -50,25 +53,33 @@ void CTextMenu::Exit()
 // -----------------------------------------------------------------------------
 void CTextMenu::Update(CTime elapsedTime)
 {
-    // Move the cursor when up/down are pressed
-    if (SystemUtilities::WasKeyPressedThisCycle(CKeyboard::Up))
+
+}
+
+// =============================================================================
+// CTextMenu::ReactToEvent
+// -----------------------------------------------------------------------------
+void CTextMenu::ReactToEvent(CEvent *theEvent)
+{
+    if (theEvent->type == CEvent::KeyPressed)
     {
-        mCurrentSelection--;
-    }
-    if (SystemUtilities::WasKeyPressedThisCycle(CKeyboard::Down))
-    {
-        mCurrentSelection++;
+        if (theEvent->key.code == CKeyboard::Up)
+        {
+            mCurrentSelection--;
+        }
+        else if (theEvent->key.code == CKeyboard::Down)
+        {
+            mCurrentSelection++;
+        }
+        else if (theEvent->key.code == CKeyboard::Return)
+        {
+            ExecuteMenuItem(mCurrentSelection);
+        }
     }
     
     // Clamp the current selection
     mCurrentSelection = std::max(mCurrentSelection, 0);
     mCurrentSelection = std::min(mCurrentSelection, int(mMenuItems.size()) - 1);
-    
-    // Execute current selection on enter
-    if (SystemUtilities::WasKeyPressedThisCycle(CKeyboard::Return))
-    {
-        ExecuteMenuItem(mCurrentSelection);
-    }
 }
 
 // =============================================================================

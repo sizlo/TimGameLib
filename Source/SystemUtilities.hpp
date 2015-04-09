@@ -13,6 +13,8 @@
 // Include Files
 // -----------------------------------------------------------------------------
 #include "SFMLIntegration/SFMLIntegration.hpp"
+#include "CEventPublisher.hpp"
+#include "CEventListener.hpp"
 #include <string>
 #include <list>
 
@@ -25,15 +27,15 @@ namespace SystemUtilities
     void Init(CWindow *theWindow);
     // Return the platform specific path to the resource location
     std::string GetResourcePath();
-    // Add an input event to the list
-    void AddInputEvent(CEvent theEvent);
-    // Clear the input event list
-    void ClearInputEvents();
-    // Was a given key pressed this cycle
-    bool WasKeyPressedThisCycle(CKeyboard::Key theKey);
-    // Was a given button pressed this cycle
-    bool WasButtonPressedThisCycle(CMouse::Button theButton,
-                                   CVector2f *thePosition);
+    
+    // Subscribe to events
+    void SubscribeToEvents(CEventListener *theListener);
+    // Unsubscribe to events
+    void UnsubscribeToEvents(CEventListener *theListener);
+    // Publish an event
+    void PublishEvent(CEvent theEvent);
+    
+    
     // Get the mouse position relative to the window
     CVector2f GetMousePosition();
 };

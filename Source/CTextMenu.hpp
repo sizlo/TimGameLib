@@ -28,6 +28,8 @@ public:
     virtual void Update(CTime elapsedTime);
     virtual void Draw(CWindow *theWindow);
     
+    virtual void ReactToEvent(CEvent *theEvent);
+    
     virtual void ExecuteMenuItem(int choice) = 0;
     virtual void AddMenuItem(std::string theItem);
 

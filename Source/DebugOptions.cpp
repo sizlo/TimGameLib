@@ -33,7 +33,7 @@ bool showMouseCoords        = false;
 // -----------------------------------------------------------------------------
 CDebugHelper::CDebugHelper()
 {
-    
+    SystemUtilities::SubscribeToEvents(this);
 }
 
 CDebugHelper::~CDebugHelper()
@@ -42,12 +42,13 @@ CDebugHelper::~CDebugHelper()
 }
 
 // =============================================================================
-// CDebugHelper::Update
+// CDebugHelper::ReactToEvent
 // -----------------------------------------------------------------------------
-void CDebugHelper::Update(CTime elapsedTime)
+void CDebugHelper::ReactToEvent(CEvent *theEvent)
 {
     // Toggle debug options on key presses, only when alt is held
-    if (CKeyboard::isKeyPressed(CKeyboard::LAlt))
+    if (CKeyboard::isKeyPressed(CKeyboard::LAlt)
+        && theEvent->type == CEvent::KeyPressed)
     {
         TOGGLE_DEBUG_OPTION(F, DebugOptions::showFramerate);
         TOGGLE_DEBUG_OPTION(B, DebugOptions::drawBounds);

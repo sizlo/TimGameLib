@@ -13,13 +13,13 @@
 // Include Files
 // -----------------------------------------------------------------------------
 #include "CRenderable.hpp"
-#include "CUpdateable.hpp"
+#include "CEventListener.hpp"
 
 // =============================================================================
 // Macros
 // -----------------------------------------------------------------------------
-#define TOGGLE_DEBUG_OPTION(key, option)                        \
-    if (SystemUtilities::WasKeyPressedThisCycle(CKeyboard::key))\
+#define TOGGLE_DEBUG_OPTION(theKey, option)                     \
+    if (theEvent->key.code == CKeyboard::theKey)                     \
     {                                                           \
         option = !option;                                       \
     }
@@ -42,12 +42,12 @@ namespace DebugOptions
 // =============================================================================
 // Class definition
 // -----------------------------------------------------------------------------
-class CDebugHelper : public CUpdateable, public CRenderable
+class CDebugHelper : public CRenderable, public CEventListener
 {
 public:
     CDebugHelper();
     ~CDebugHelper();
-    void Update(CTime elapsedTime);
+    void ReactToEvent(CEvent *theEvent);
     void Draw(CWindow *theWindow);
     
     void AddShape(CConvexShape *theShape);

@@ -137,10 +137,9 @@ void CGame::Init(int initialGameLocation)
     SystemUtilities::Init(mWindow);
     InitSFML(mWindow);
     
-    // Create and register any lifetime updateables
+    // Create and register any lifetime objects
 #if TGL_DEBUG
     theDebugHelper = new CDebugHelper();
-    RegisterUpdateable(theDebugHelper);
 #endif
 }
 
@@ -345,9 +344,6 @@ void CGame::GoToLocation(int theLocation,
 // -----------------------------------------------------------------------------
 void CGame::ProcessEvents()
 {
-    // Clear the last cycles keypress/mouse event list
-    SystemUtilities::ClearInputEvents();
-    
     CEvent theEvent;
     while (mWindow->pollEvent(theEvent))
     {
@@ -369,13 +365,7 @@ void CGame::ProcessEvents()
                     ExitGame();
                 }
 #endif
-                // Fall through to mouse press
-                
-            case CEvent::MouseButtonPressed:
-                // Keep a list of key and mouse press events this cycle
-                SystemUtilities::AddInputEvent(theEvent);
                 break;
-                
                 
             case CEvent::Closed:
                 // Exit on close event
@@ -396,6 +386,9 @@ void CGame::ProcessEvents()
             default:
                 break; // Do nothing
         }
+        
+        // Publish this event
+        SystemUtilities::PublishEvent(theEvent);
     }
     
     // React to exit requests

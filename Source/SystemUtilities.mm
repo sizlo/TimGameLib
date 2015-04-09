@@ -26,6 +26,7 @@ namespace SystemUtilities
 // -----------------------------------------------------------------------------
 std::list<CEvent>   theInputEvents;
 CWindow             *theGameWindow;
+CEventPublisher     theEventPublisher;
     
 // =============================================================================
 // SystemUtilities::Init
@@ -141,6 +142,30 @@ bool WasButtonPressedThisCycle(CMouse::Button theButton,
     }
     
     return theResult;
+}
+    
+// =============================================================================
+// SystemUtilities::SubscribeToEvents
+// -----------------------------------------------------------------------------
+void SubscribeToEvents(CEventListener *theListener)
+{
+    theEventPublisher.Subscribe(theListener);
+}
+    
+// =============================================================================
+// SystemUtilities::UnsubscribeToEvents
+// -----------------------------------------------------------------------------
+void UnsubscribeToEvents(CEventListener *theListener)
+{
+    theEventPublisher.Unsubscribe(theListener);
+}
+    
+// =============================================================================
+// SystemUtilities::PublishEvent
+// -----------------------------------------------------------------------------
+void PublishEvent(CEvent theEvent)
+{
+    theEventPublisher.PublishEvent(theEvent);
 }
     
 // =============================================================================
