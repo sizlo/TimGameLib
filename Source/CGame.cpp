@@ -50,7 +50,7 @@ CGame::CGame(std::string theTitle)
 #endif
     mExitCode(EXIT_SUCCESS),
     mExitRequested(false),
-    mGameState(kGameStateFrontEnd),
+    mGameState((EGameState)0),
     mCurrentLocation(NULL)
 {
     if (smInstance == NULL)
