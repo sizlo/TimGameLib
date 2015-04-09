@@ -27,6 +27,7 @@ namespace SystemUtilities
 std::list<CEvent>   theInputEvents;
 CWindow             *theGameWindow;
 CEventPublisher     theEventPublisher;
+std::list<CEvent>   theDragEvents;
     
 // =============================================================================
 // SystemUtilities::Init
@@ -35,6 +36,25 @@ CEventPublisher     theEventPublisher;
 void Init(CWindow *theWindow)
 {
     theGameWindow = theWindow;
+    
+    // Add a drag event for each kind of mouse button
+    CEvent leftDrag, rightDrag, middleDrag, x1Drag, x2Drag;
+    leftDrag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
+    leftDrag.mouseDrag.button = CMouse::Left;
+    rightDrag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
+    rightDrag.mouseDrag.button = CMouse::Right;
+    middleDrag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
+    middleDrag.mouseDrag.button = CMouse::Middle;
+    x1Drag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
+    x1Drag.mouseDrag.button = CMouse::XButton1;
+    x2Drag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
+    x2Drag.mouseDrag.button = CMouse::XButton2;
+    
+    theDragEvents.push_back(leftDrag);
+    theDragEvents.push_back(rightDrag);
+    theDragEvents.push_back(middleDrag);
+    theDragEvents.push_back(x1Drag);
+    theDragEvents.push_back(x2Drag);
 }
 
 // =============================================================================
@@ -76,73 +96,6 @@ std::string GetResourcePath()
 
     return theReturnPath;
 }
-
-// =============================================================================
-// SystemUtilities::AddInputEvent
-// Add an input event to this of them recieved this cycle
-// -----------------------------------------------------------------------------
-void AddInputEvent(CEvent theEvent)
-{
-    theInputEvents.push_back(theEvent);
-}
-
-// =============================================================================
-// SystemUtilities::ClearInputEvents
-// Clear the list of input events
-// -----------------------------------------------------------------------------
-void ClearInputEvents()
-{
-    theInputEvents.clear();
-}
-
-// =============================================================================
-// SystemUtilities::WasKeyPressedThisCycle
-// Was a keypress event recieved for the given key this cycle
-// -----------------------------------------------------------------------------
-bool WasKeyPressedThisCycle(CKeyboard::Key theKey)
-{
-    bool theResult = false;
-    
-    FOR_EACH_IN_LIST(CEvent, theInputEvents)
-    {
-        if ((*it).type == CEvent::KeyPressed && (*it).key.code == theKey)
-        {
-            theResult = true;
-        }
-    }
-    
-    return theResult;
-}
-
-// =============================================================================
-// SystemUtilities::WasButtonPressedThisCycle
-// Was a mouse press event recieved for the given button this cycle
-// Fills an ouput vector with the position when pressed
-// -----------------------------------------------------------------------------
-bool WasButtonPressedThisCycle(CMouse::Button theButton,
-                               CVector2f *thePosition)
-{
-    bool theResult = false;
-    
-    FOR_EACH_IN_LIST(CEvent, theInputEvents)
-    {
-        if ((*it).type == CEvent::MouseButtonPressed
-            && (*it).mouseButton.button == theButton)
-        {
-            theResult = true;
-            
-			CVector2i windowPosition((*it).mouseButton.x, (*it).mouseButton.y);
-			CVector2f viewPosition = theGameWindow->mapPixelToCoords(windowPosition);
-            
-			// Set the output position to the cursor position when the button
-            // was pressed
-            thePosition->x = viewPosition.x;
-            thePosition->y = viewPosition.y;
-        }
-    }
-    
-    return theResult;
-}
     
 // =============================================================================
 // SystemUtilities::SubscribeToEvents
@@ -165,7 +118,68 @@ void UnsubscribeToEvents(CEventListener *theListener)
 // -----------------------------------------------------------------------------
 void PublishEvent(CEvent theEvent)
 {
+    std::list<CEvent> extraEventsToPublish;
+    
+    // If a button is pressed clear its drag event and set its start location
+    if (theEvent.type == CEvent::EventType::MouseButtonPressed)
+    {
+        for (CEvent &dragEvent: theDragEvents)
+        {
+            if (dragEvent.mouseDrag.button == theEvent.mouseButton.button)
+            {
+                dragEvent.mouseDrag.inBetweenLocations.clear();
+                int x = theEvent.mouseButton.x;
+                int y = theEvent.mouseButton.y;
+                dragEvent.mouseDrag.pressLocation = CVector2f(x, y);
+                
+                dragEvent.mouseDrag.inProgress = true;
+            }
+        }
+    }
+    
+    // If the mouse is moved add this location to any in progress mouseDrags
+    if (theEvent.type == CEvent::EventType::MouseMoved)
+    {
+        for (CEvent &dragEvent: theDragEvents)
+        {
+            if (dragEvent.mouseDrag.inProgress)
+            {
+                int x = theEvent.mouseMove.x;
+                int y = theEvent.mouseMove.y;
+                dragEvent.mouseDrag.inBetweenLocations.push_back(CVector2f(x, y));
+            }
+        }
+    }
+    
+    // If a button is released set its end location
+    if (theEvent.type == CEvent::EventType::MouseButtonReleased)
+    {
+        for (CEvent &dragEvent: theDragEvents)
+        {
+            if (dragEvent.mouseDrag.button == theEvent.mouseButton.button
+                && dragEvent.mouseDrag.inProgress)
+            {
+                int x = theEvent.mouseButton.x;
+                int y = theEvent.mouseButton.y;
+                dragEvent.mouseDrag.releaseLocation = CVector2f(x, y);
+                
+                dragEvent.mouseDrag.inProgress = false;
+                
+                // Publish this finished drag if it actually moved
+                if (dragEvent.mouseDrag.inBetweenLocations.size() > 0)
+                {
+                    extraEventsToPublish.push_back(dragEvent);
+                }
+            }
+        }
+    }
+    
     theEventPublisher.PublishEvent(theEvent);
+    
+    for (CEvent extraEvent: extraEventsToPublish)
+    {
+        theEventPublisher.PublishEvent(extraEvent);
+    }
 }
     
 // =============================================================================
