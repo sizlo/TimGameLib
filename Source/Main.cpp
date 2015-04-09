@@ -17,7 +17,7 @@
 // -----------------------------------------------------------------------------
 int main(int argc, char **argv)
 {
-    CGame theGame;
+    CGame theGame("Game");
     theGame.Init();
     int returnCode = theGame.Run();
     theGame.Cleanup();

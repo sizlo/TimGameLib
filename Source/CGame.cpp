@@ -39,17 +39,18 @@ CGame * CGame::Get()
 // =============================================================================
 // CGame constructor/destructor
 // -----------------------------------------------------------------------------
-CGame::CGame() :            mWindowTitle("Game"),
-                            mWindow(NULL),
-                            mFPS(0),
-                            mShouldSkipUpdateFrame(false),
+CGame::CGame(std::string theTitle)
+:   mWindowTitle(theTitle),
+    mWindow(NULL),
+    mFPS(0),
+    mShouldSkipUpdateFrame(false),
 #if !USE_SFML_VSYNC
-                            mUPS(0),
+    mUPS(0),
 #endif
-                            mExitCode(EXIT_SUCCESS),
-                            mExitRequested(false),
-                            mGameState(kGameStateFrontEnd),
-                            mCurrentLocation(NULL)
+    mExitCode(EXIT_SUCCESS),
+    mExitRequested(false),
+    mGameState(kGameStateFrontEnd),
+    mCurrentLocation(NULL)
 {
     if (smInstance == NULL)
     {

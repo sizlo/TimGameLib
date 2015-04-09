@@ -42,7 +42,7 @@ class CGame
 public:
     static CGame * Get();
     
-    CGame();
+    CGame(std::string theTitle);
     ~CGame();
     
     // Initialise the game
