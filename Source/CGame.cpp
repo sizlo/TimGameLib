@@ -42,6 +42,7 @@ CGame * CGame::Get()
 CGame::CGame(std::string theTitle)
 :   mWindowTitle(theTitle),
     mWindow(NULL),
+    mClearColour(CColour::Black),
     mFPS(0),
     mShouldSkipUpdateFrame(false),
 #if !USE_SFML_VSYNC
@@ -487,7 +488,7 @@ void CGame::Render()
     }
     
     // Clear the window
-    mWindow->clear();
+    mWindow->clear(mClearColour);
     
     // Iterate through all registered renderables, drawing them all
     FOR_EACH_IN_LIST(CRenderable *, mTheRenderables)

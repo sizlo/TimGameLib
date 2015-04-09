@@ -84,6 +84,9 @@ protected:
     std::string mWindowTitle;
     CWindow *mWindow;
     
+    // The colour the screen is set to when cleared
+    CColour mClearColour;
+    
     // Frames per second and updates per second
     int mFPS;
 #if !USE_SFML_VSYNC
