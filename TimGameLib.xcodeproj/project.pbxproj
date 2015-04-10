@@ -13,6 +13,8 @@
 		2207D2DA1AD6DE6300A7D8AC /* CEventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2D71AD6D77900A7D8AC /* CEventListener.cpp */; };
 		2207D2DB1AD6DE6600A7D8AC /* CEventPublisher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2D41AD6D6EF00A7D8AC /* CEventPublisher.cpp */; };
 		2207D2DC1AD6DE6A00A7D8AC /* CObservable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2CE1AD6D4AA00A7D8AC /* CObservable.cpp */; };
+		2207D2E41AD74DC500A7D8AC /* MathsUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2E21AD74DC500A7D8AC /* MathsUtilities.cpp */; };
+		2207D2E51AD74F1E00A7D8AC /* MathsUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2E21AD74DC500A7D8AC /* MathsUtilities.cpp */; };
 		2296E7641AD580290079CF6F /* CTextMenu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2251F4691A7D611500B7628B /* CTextMenu.cpp */; };
 		2296E7651AD580290079CF6F /* CDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 22BBDBEF1A2BBC6600775A51 /* CDrawable.cpp */; };
 		2296E7661AD580290079CF6F /* CColour.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2267170019F291B100BF72D6 /* CColour.cpp */; };
@@ -80,6 +82,8 @@
 		2207D2D51AD6D6EF00A7D8AC /* CEventPublisher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CEventPublisher.hpp; sourceTree = "<group>"; };
 		2207D2D71AD6D77900A7D8AC /* CEventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CEventListener.cpp; sourceTree = "<group>"; };
 		2207D2D81AD6D77900A7D8AC /* CEventListener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CEventListener.hpp; sourceTree = "<group>"; };
+		2207D2E21AD74DC500A7D8AC /* MathsUtilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MathsUtilities.cpp; sourceTree = "<group>"; };
+		2207D2E31AD74DC500A7D8AC /* MathsUtilities.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MathsUtilities.hpp; sourceTree = "<group>"; };
 		2218B5F519D31409002A2EB7 /* TimGameLib-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "TimGameLib-Info.plist"; path = "MacResources/TimGameLib-Info.plist"; sourceTree = SOURCE_ROOT; };
 		2218B5F819D3143E002A2EB7 /* SystemUtilities.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SystemUtilities.hpp; sourceTree = "<group>"; };
 		2218B5F919D3143E002A2EB7 /* SystemUtilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SystemUtilities.mm; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				2207D2D51AD6D6EF00A7D8AC /* CEventPublisher.hpp */,
 				2207D2D71AD6D77900A7D8AC /* CEventListener.cpp */,
 				2207D2D81AD6D77900A7D8AC /* CEventListener.hpp */,
+				2207D2E21AD74DC500A7D8AC /* MathsUtilities.cpp */,
+				2207D2E31AD74DC500A7D8AC /* MathsUtilities.hpp */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
@@ -462,6 +468,7 @@
 				2207D2D61AD6D6EF00A7D8AC /* CEventPublisher.cpp in Sources */,
 				2296E77C1AD580290079CF6F /* CTime.cpp in Sources */,
 				2296E77D1AD580290079CF6F /* CClock.cpp in Sources */,
+				2207D2E41AD74DC500A7D8AC /* MathsUtilities.cpp in Sources */,
 				2296E77E1AD580290079CF6F /* CGame.cpp in Sources */,
 				2207D2D01AD6D4AA00A7D8AC /* CObservable.cpp in Sources */,
 				2296E77F1AD580290079CF6F /* CConvexShape.cpp in Sources */,
@@ -488,6 +495,7 @@
 				2296E7981AD582FC0079CF6F /* CConvexShape.cpp in Sources */,
 				2296E7AC1AD5835F0079CF6F /* CollisionHandler.cpp in Sources */,
 				2296E7A91AD583530079CF6F /* GameOptions.cpp in Sources */,
+				2207D2E51AD74F1E00A7D8AC /* MathsUtilities.cpp in Sources */,
 				2296E7A11AD583200079CF6F /* CCircleShape.cpp in Sources */,
 				2296E7951AD582F00079CF6F /* CText.cpp in Sources */,
 				2296E7A31AD583300079CF6F /* SystemUtilities.mm in Sources */,
