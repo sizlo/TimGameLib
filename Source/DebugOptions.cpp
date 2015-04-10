@@ -38,7 +38,7 @@ CDebugHelper::CDebugHelper()
 
 CDebugHelper::~CDebugHelper()
 {
-    
+    SystemUtilities::UnsubscribeToEvents(this);
 }
 
 // =============================================================================
