@@ -7,26 +7,19 @@
 //
 
 #include "MathsUtilities.hpp"
-#include <stdlib.h>
-#include <time.h>
+#include <random>
 
 namespace MathsUtilities
 {
     
-int RandomInRange(int min, int max)
+std::function<unsigned int()> GetRandomGeneratorFunctionForRange(int min,
+                                                                 int max)
 {
-    static bool seeded = false;
-    if (!seeded)
-    {
-        srand(time(NULL));
-    }
-    
-    int range = (max - min) + 1;
-    int num = rand();
-    num %= range;
-    num += min;
-    
-    return num;
+    std::random_device device;
+    std::default_random_engine generator(device());
+    std::uniform_int_distribution<int> distribution(min, max);
+    auto result = std::bind(distribution, generator);
+    return result;
 }
     
 } // namespace MathsUtilities

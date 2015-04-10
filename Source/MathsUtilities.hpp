@@ -9,9 +9,12 @@
 #ifndef __TimGameLib__MathsUtilities__
 #define __TimGameLib__MathsUtilities__
 
+#include <functional>
+
 namespace MathsUtilities
 {
-    int RandomInRange(int min, int max);
+    std::function<unsigned int()> GetRandomGeneratorFunctionForRange(int min,
+                                                                     int max);
 }
 
 #endif /* defined(__TimGameLib__MathsUtilities__) */
