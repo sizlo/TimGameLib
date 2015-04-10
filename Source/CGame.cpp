@@ -130,9 +130,6 @@ void CGame::Init(int initialGameLocation)
         DEBUG_LOG("View aspect ratio doesn't match window aspect ratio");
     }
     
-    // Enter the initial location
-    GoToLocation(initialGameLocation);
-    
     // Initialise other systems
     SystemUtilities::Init(mWindow);
     InitSFML(mWindow);
@@ -141,6 +138,9 @@ void CGame::Init(int initialGameLocation)
 #if TGL_DEBUG
     theDebugHelper = new CDebugHelper();
 #endif
+    
+    // Enter the initial location
+    GoToLocation(initialGameLocation);
 }
 
 // =============================================================================
