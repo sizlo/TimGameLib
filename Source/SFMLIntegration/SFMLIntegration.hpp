@@ -17,6 +17,7 @@
 #include "CColour.hpp"
 #include "CEvent.hpp"
 #include "CFloatRect.hpp"
+#include "CIntRect.hpp"
 #include "CImage.hpp"
 #include "CKeyboard.hpp"
 #include "CMouse.hpp"
