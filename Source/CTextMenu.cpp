@@ -59,19 +59,19 @@ void CTextMenu::Update(CTime elapsedTime)
 // =============================================================================
 // CTextMenu::ReactToEvent
 // -----------------------------------------------------------------------------
-void CTextMenu::ReactToEvent(CEvent *theEvent)
+bool CTextMenu::HandleMessage(CEvent theEvent)
 {
-    if (theEvent->type == CEvent::KeyPressed)
+    if (theEvent.type == CEvent::KeyPressed)
     {
-        if (theEvent->key.code == CKeyboard::Up)
+        if (theEvent.key.code == CKeyboard::Up)
         {
             mCurrentSelection--;
         }
-        else if (theEvent->key.code == CKeyboard::Down)
+        else if (theEvent.key.code == CKeyboard::Down)
         {
             mCurrentSelection++;
         }
-        else if (theEvent->key.code == CKeyboard::Return)
+        else if (theEvent.key.code == CKeyboard::Return)
         {
             ExecuteMenuItem(mCurrentSelection);
         }
@@ -80,6 +80,8 @@ void CTextMenu::ReactToEvent(CEvent *theEvent)
     // Clamp the current selection
     mCurrentSelection = std::max(mCurrentSelection, 0);
     mCurrentSelection = std::min(mCurrentSelection, int(mMenuItems.size()) - 1);
+    
+    return false;
 }
 
 // =============================================================================

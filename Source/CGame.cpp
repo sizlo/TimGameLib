@@ -14,6 +14,7 @@
 #include "GameOptions.hpp"
 #include "DebugOptions.hpp"
 #include "SystemUtilities.hpp"
+#include "CMessageBroadcaster.hpp"
 #include <sstream>
 
 // =============================================================================
@@ -387,8 +388,9 @@ void CGame::ProcessEvents()
                 break; // Do nothing
         }
         
-        // Publish this event
-        SystemUtilities::PublishEvent(theEvent);
+        // Broadcast this event
+        CMessageBroadcaster<CEvent>::BroadcastMessage(theEvent);
+        
     }
     
     // React to exit requests

@@ -11,6 +11,7 @@
 // -----------------------------------------------------------------------------
 #include "DebugOptions.hpp"
 #include "SystemUtilities.hpp"
+#include "CMessageBroadcaster.hpp"
 
 namespace DebugOptions
 {
@@ -33,22 +34,22 @@ bool showMouseCoords        = false;
 // -----------------------------------------------------------------------------
 CDebugHelper::CDebugHelper()
 {
-    SystemUtilities::SubscribeToEvents(this);
+    CMessageBroadcaster<CEvent>::Subscribe(this);
 }
 
 CDebugHelper::~CDebugHelper()
 {
-    SystemUtilities::UnsubscribeToEvents(this);
+    CMessageBroadcaster<CEvent>::Unsubscribe(this);
 }
 
 // =============================================================================
 // CDebugHelper::ReactToEvent
 // -----------------------------------------------------------------------------
-void CDebugHelper::ReactToEvent(CEvent *theEvent)
+bool CDebugHelper::HandleMessage(CEvent theEvent)
 {
     // Toggle debug options on key presses, only when alt is held
     if (CKeyboard::isKeyPressed(CKeyboard::LAlt)
-        && theEvent->type == CEvent::KeyPressed)
+        && theEvent.type == CEvent::KeyPressed)
     {
         TOGGLE_DEBUG_OPTION(F, DebugOptions::showFramerate);
         TOGGLE_DEBUG_OPTION(B, DebugOptions::drawBounds);
@@ -58,6 +59,8 @@ void CDebugHelper::ReactToEvent(CEvent *theEvent)
         TOGGLE_DEBUG_OPTION(S, DebugOptions::useSlowMotion);
         TOGGLE_DEBUG_OPTION(M, DebugOptions::showMouseCoords);
     }
+    
+    return false;
 }
 
 // =============================================================================

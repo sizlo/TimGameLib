@@ -13,8 +13,6 @@
 // Include Files
 // -----------------------------------------------------------------------------
 #include "SFMLIntegration/SFMLIntegration.hpp"
-#include "CEventPublisher.hpp"
-#include "CEventListener.hpp"
 #include <string>
 #include <list>
 
@@ -28,16 +26,10 @@ namespace SystemUtilities
     // Return the platform specific path to the resource location
     std::string GetResourcePath();
     
-    // Subscribe to events
-    void SubscribeToEvents(CEventListener *theListener);
-    // Unsubscribe to events
-    void UnsubscribeToEvents(CEventListener *theListener);
-    // Publish an event
-    void PublishEvent(CEvent theEvent);
-    
-    
     // Get the mouse position relative to the window
     CVector2f GetMousePosition();
+    // Map window position to view position
+    CVector2f GetViewPosition(CVector2i windowPosition);
 };
 
 #endif /* defined(__TimeGameLib__SystemUtilities__) */

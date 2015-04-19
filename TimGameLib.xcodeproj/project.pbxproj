@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2207D2D01AD6D4AA00A7D8AC /* CObservable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2CE1AD6D4AA00A7D8AC /* CObservable.cpp */; };
-		2207D2D61AD6D6EF00A7D8AC /* CEventPublisher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2D41AD6D6EF00A7D8AC /* CEventPublisher.cpp */; };
-		2207D2D91AD6D77900A7D8AC /* CEventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2D71AD6D77900A7D8AC /* CEventListener.cpp */; };
-		2207D2DA1AD6DE6300A7D8AC /* CEventListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2D71AD6D77900A7D8AC /* CEventListener.cpp */; };
-		2207D2DB1AD6DE6600A7D8AC /* CEventPublisher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2D41AD6D6EF00A7D8AC /* CEventPublisher.cpp */; };
-		2207D2DC1AD6DE6A00A7D8AC /* CObservable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2CE1AD6D4AA00A7D8AC /* CObservable.cpp */; };
 		2207D2E41AD74DC500A7D8AC /* MathsUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2E21AD74DC500A7D8AC /* MathsUtilities.cpp */; };
 		2207D2E51AD74F1E00A7D8AC /* MathsUtilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2E21AD74DC500A7D8AC /* MathsUtilities.cpp */; };
 		2207D2E81ADC015400A7D8AC /* CAnimatedSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2207D2E61ADC015300A7D8AC /* CAnimatedSprite.cpp */; };
@@ -81,13 +75,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2207D2CE1AD6D4AA00A7D8AC /* CObservable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CObservable.cpp; sourceTree = "<group>"; };
-		2207D2CF1AD6D4AA00A7D8AC /* CObservable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CObservable.hpp; sourceTree = "<group>"; };
-		2207D2D21AD6D62200A7D8AC /* CObserver.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CObserver.hpp; sourceTree = "<group>"; };
-		2207D2D41AD6D6EF00A7D8AC /* CEventPublisher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CEventPublisher.cpp; sourceTree = "<group>"; };
-		2207D2D51AD6D6EF00A7D8AC /* CEventPublisher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CEventPublisher.hpp; sourceTree = "<group>"; };
-		2207D2D71AD6D77900A7D8AC /* CEventListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CEventListener.cpp; sourceTree = "<group>"; };
-		2207D2D81AD6D77900A7D8AC /* CEventListener.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CEventListener.hpp; sourceTree = "<group>"; };
 		2207D2E21AD74DC500A7D8AC /* MathsUtilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MathsUtilities.cpp; sourceTree = "<group>"; };
 		2207D2E31AD74DC500A7D8AC /* MathsUtilities.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = MathsUtilities.hpp; sourceTree = "<group>"; };
 		2207D2E61ADC015300A7D8AC /* CAnimatedSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAnimatedSprite.cpp; sourceTree = "<group>"; };
@@ -107,6 +94,8 @@
 		2250711319D4CA3F00F1179D /* Macros.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Macros.hpp; sourceTree = "<group>"; };
 		2251F4691A7D611500B7628B /* CTextMenu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTextMenu.cpp; sourceTree = "<group>"; };
 		2251F46A1A7D611500B7628B /* CTextMenu.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CTextMenu.hpp; sourceTree = "<group>"; };
+		2261B61A1AE3EF470013D5CA /* CMessageBroadcaster.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CMessageBroadcaster.hpp; sourceTree = "<group>"; };
+		2261B61B1AE3F3670013D5CA /* CMessageListener.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CMessageListener.hpp; sourceTree = "<group>"; };
 		2266696619FFC84D00BB750D /* CollisionHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CollisionHandler.cpp; sourceTree = "<group>"; };
 		2266696719FFC84D00BB750D /* CollisionHandler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = CollisionHandler.hpp; sourceTree = "<group>"; };
 		226669691A01097D00BB750D /* CView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CView.cpp; sourceTree = "<group>"; };
@@ -221,17 +210,12 @@
 				2266696719FFC84D00BB750D /* CollisionHandler.hpp */,
 				2251F4691A7D611500B7628B /* CTextMenu.cpp */,
 				2251F46A1A7D611500B7628B /* CTextMenu.hpp */,
-				2207D2CE1AD6D4AA00A7D8AC /* CObservable.cpp */,
-				2207D2CF1AD6D4AA00A7D8AC /* CObservable.hpp */,
-				2207D2D21AD6D62200A7D8AC /* CObserver.hpp */,
-				2207D2D41AD6D6EF00A7D8AC /* CEventPublisher.cpp */,
-				2207D2D51AD6D6EF00A7D8AC /* CEventPublisher.hpp */,
-				2207D2D71AD6D77900A7D8AC /* CEventListener.cpp */,
-				2207D2D81AD6D77900A7D8AC /* CEventListener.hpp */,
 				2207D2E21AD74DC500A7D8AC /* MathsUtilities.cpp */,
 				2207D2E31AD74DC500A7D8AC /* MathsUtilities.hpp */,
 				2207D2E61ADC015300A7D8AC /* CAnimatedSprite.cpp */,
 				2207D2E71ADC015400A7D8AC /* CAnimatedSprite.hpp */,
+				2261B61A1AE3EF470013D5CA /* CMessageBroadcaster.hpp */,
+				2261B61B1AE3F3670013D5CA /* CMessageListener.hpp */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
@@ -470,7 +454,6 @@
 				2296E76F1AD580290079CF6F /* CWindow.cpp in Sources */,
 				2296E7701AD580290079CF6F /* CSprite.cpp in Sources */,
 				2296E7711AD580290079CF6F /* CView.cpp in Sources */,
-				2207D2D91AD6D77900A7D8AC /* CEventListener.cpp in Sources */,
 				2207D2ED1ADC036800A7D8AC /* CIntRect.cpp in Sources */,
 				2296E7721AD580290079CF6F /* CVertex.cpp in Sources */,
 				2296E7731AD580290079CF6F /* CFloatRect.cpp in Sources */,
@@ -482,12 +465,10 @@
 				2296E7791AD580290079CF6F /* CCircleShape.cpp in Sources */,
 				2296E77A1AD580290079CF6F /* CMusic.cpp in Sources */,
 				2296E77B1AD580290079CF6F /* pugixml.cpp in Sources */,
-				2207D2D61AD6D6EF00A7D8AC /* CEventPublisher.cpp in Sources */,
 				2296E77C1AD580290079CF6F /* CTime.cpp in Sources */,
 				2296E77D1AD580290079CF6F /* CClock.cpp in Sources */,
 				2207D2E41AD74DC500A7D8AC /* MathsUtilities.cpp in Sources */,
 				2296E77E1AD580290079CF6F /* CGame.cpp in Sources */,
-				2207D2D01AD6D4AA00A7D8AC /* CObservable.cpp in Sources */,
 				2296E77F1AD580290079CF6F /* CConvexShape.cpp in Sources */,
 				2207D2E81ADC015400A7D8AC /* CAnimatedSprite.cpp in Sources */,
 			);
@@ -498,7 +479,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2207D2EE1ADC036800A7D8AC /* CIntRect.cpp in Sources */,
-				2207D2DC1AD6DE6A00A7D8AC /* CObservable.cpp in Sources */,
 				2207D2E91ADC015400A7D8AC /* CAnimatedSprite.cpp in Sources */,
 				2296E7AB1AD5835B0079CF6F /* XMLInterpreter.cpp in Sources */,
 				2296E7A01AD5831C0079CF6F /* CDrawable.cpp in Sources */,
@@ -506,9 +486,7 @@
 				2296E7A81AD5834D0079CF6F /* DebugOptions.cpp in Sources */,
 				2296E7991AD582FF0079CF6F /* CTexture.cpp in Sources */,
 				2296E7931AD582E60079CF6F /* CWindow.cpp in Sources */,
-				2207D2DA1AD6DE6300A7D8AC /* CEventListener.cpp in Sources */,
 				2296E7AA1AD583580079CF6F /* CLine.cpp in Sources */,
-				2207D2DB1AD6DE6600A7D8AC /* CEventPublisher.cpp in Sources */,
 				2296E79F1AD583180079CF6F /* CVertex.cpp in Sources */,
 				2296E7A71AD583480079CF6F /* CTextureBank.cpp in Sources */,
 				2296E79C1AD5830B0079CF6F /* CFloatRect.cpp in Sources */,

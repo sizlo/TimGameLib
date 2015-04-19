@@ -15,13 +15,16 @@
 #include "CRenderable.hpp"
 #include "CUpdateable.hpp"
 #include "CGameLocation.hpp"
-#include "CEventListener.hpp"
-#include "SystemUtilities.hpp"
+#include "CMessageListener.hpp"
+#include "CMessageBroadcaster.hpp"
 
 // =============================================================================
 // Abstract class definition
 // -----------------------------------------------------------------------------
-class CMenu : public CRenderable, public CUpdateable, public CGameLocation, public CEventListener
+class CMenu :   public CRenderable,
+                public CUpdateable,
+                public CGameLocation,
+                public CMessageListener<CEvent>
 {
 public:
     virtual ~CMenu(){};
@@ -29,18 +32,18 @@ public:
     virtual void Enter();
     virtual void Draw(CWindow *theWindow) = 0;
     virtual void Update(CTime elapsedTime) = 0;
-    virtual void ReactToEvent(CEvent *theEvent) = 0;
+    virtual bool HandleMessage(CEvent theEvent) = 0;
     virtual void Exit();
 };
 
 void CMenu::Enter()
 {
-    SystemUtilities::SubscribeToEvents(this);
+    CMessageBroadcaster<CEvent>::Subscribe(this);
 }
 
 void CMenu::Exit()
 {
-    SystemUtilities::UnsubscribeToEvents(this);
+    CMessageBroadcaster<CEvent>::Unsubscribe(this);
 }
 
 #endif

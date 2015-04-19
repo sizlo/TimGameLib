@@ -24,10 +24,7 @@ namespace SystemUtilities
 // =============================================================================
 // Namespace globals
 // -----------------------------------------------------------------------------
-std::list<CEvent>   theInputEvents;
 CWindow             *theGameWindow;
-CEventPublisher     theEventPublisher;
-std::list<CEvent>   theDragEvents;
     
 // =============================================================================
 // SystemUtilities::Init
@@ -36,25 +33,6 @@ std::list<CEvent>   theDragEvents;
 void Init(CWindow *theWindow)
 {
     theGameWindow = theWindow;
-    
-    // Add a drag event for each kind of mouse button
-    CEvent leftDrag, rightDrag, middleDrag, x1Drag, x2Drag;
-    leftDrag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
-    leftDrag.mouseDrag.button = CMouse::Left;
-    rightDrag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
-    rightDrag.mouseDrag.button = CMouse::Right;
-    middleDrag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
-    middleDrag.mouseDrag.button = CMouse::Middle;
-    x1Drag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
-    x1Drag.mouseDrag.button = CMouse::XButton1;
-    x2Drag.SetExtraType(CEvent::ExtraEventType::MouseDrag);
-    x2Drag.mouseDrag.button = CMouse::XButton2;
-    
-    theDragEvents.push_back(leftDrag);
-    theDragEvents.push_back(rightDrag);
-    theDragEvents.push_back(middleDrag);
-    theDragEvents.push_back(x1Drag);
-    theDragEvents.push_back(x2Drag);
 }
 
 // =============================================================================
@@ -98,99 +76,24 @@ std::string GetResourcePath()
 }
     
 // =============================================================================
-// SystemUtilities::SubscribeToEvents
-// -----------------------------------------------------------------------------
-void SubscribeToEvents(CEventListener *theListener)
-{
-    theEventPublisher.Subscribe(theListener);
-}
-    
-// =============================================================================
-// SystemUtilities::UnsubscribeToEvents
-// -----------------------------------------------------------------------------
-void UnsubscribeToEvents(CEventListener *theListener)
-{
-    theEventPublisher.Unsubscribe(theListener);
-}
-    
-// =============================================================================
-// SystemUtilities::PublishEvent
-// -----------------------------------------------------------------------------
-void PublishEvent(CEvent theEvent)
-{
-    std::list<CEvent> extraEventsToPublish;
-    
-    // If a button is pressed clear its drag event and set its start location
-    if (theEvent.type == CEvent::EventType::MouseButtonPressed)
-    {
-        for (CEvent &dragEvent: theDragEvents)
-        {
-            if (dragEvent.mouseDrag.button == theEvent.mouseButton.button)
-            {
-                dragEvent.mouseDrag.inBetweenLocations.clear();
-                int x = theEvent.mouseButton.x;
-                int y = theEvent.mouseButton.y;
-                dragEvent.mouseDrag.pressLocation = CVector2f(x, y);
-                
-                dragEvent.mouseDrag.inProgress = true;
-            }
-        }
-    }
-    
-    // If the mouse is moved add this location to any in progress mouseDrags
-    if (theEvent.type == CEvent::EventType::MouseMoved)
-    {
-        for (CEvent &dragEvent: theDragEvents)
-        {
-            if (dragEvent.mouseDrag.inProgress)
-            {
-                int x = theEvent.mouseMove.x;
-                int y = theEvent.mouseMove.y;
-                dragEvent.mouseDrag.inBetweenLocations.push_back(CVector2f(x, y));
-            }
-        }
-    }
-    
-    // If a button is released set its end location
-    if (theEvent.type == CEvent::EventType::MouseButtonReleased)
-    {
-        for (CEvent &dragEvent: theDragEvents)
-        {
-            if (dragEvent.mouseDrag.button == theEvent.mouseButton.button
-                && dragEvent.mouseDrag.inProgress)
-            {
-                int x = theEvent.mouseButton.x;
-                int y = theEvent.mouseButton.y;
-                dragEvent.mouseDrag.releaseLocation = CVector2f(x, y);
-                
-                dragEvent.mouseDrag.inProgress = false;
-                
-                // Publish this finished drag if it actually moved
-                if (dragEvent.mouseDrag.inBetweenLocations.size() > 0)
-                {
-                    extraEventsToPublish.push_back(dragEvent);
-                }
-            }
-        }
-    }
-    
-    theEventPublisher.PublishEvent(theEvent);
-    
-    for (CEvent extraEvent: extraEventsToPublish)
-    {
-        theEventPublisher.PublishEvent(extraEvent);
-    }
-}
-    
-// =============================================================================
 // SystemUtilities::GetMousePosition
 // Get the mouse position relative to the windows current view
 // -----------------------------------------------------------------------------
 CVector2f GetMousePosition()
 {
     CVector2i windowPosition = CMouse::getPosition(*theGameWindow);
-    CVector2f viewPosition = theGameWindow->mapPixelToCoords(windowPosition);
+    CVector2f viewPosition = GetViewPosition(windowPosition);
     
+    return viewPosition;
+}
+    
+// =============================================================================
+// SystemUtilities::GetViewPosition
+// Map window position to view position
+// -----------------------------------------------------------------------------
+CVector2f GetViewPosition(CVector2i windowPosition)
+{
+    CVector2f viewPosition = theGameWindow->mapPixelToCoords(windowPosition);
     return viewPosition;
 }
     
