@@ -21,6 +21,7 @@
 #include "CImage.hpp"
 #include "CKeyboard.hpp"
 #include "CMouse.hpp"
+#include "CJoystick.hpp"
 #include "CTexture.hpp"
 #include "CTime.hpp"
 #include "CVector2.hpp"
