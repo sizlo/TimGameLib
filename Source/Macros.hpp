@@ -39,4 +39,15 @@
          it != listName.end();                                      \
          ++it)
 
+// =============================================================================
+// Free the contents of a list
+// -----------------------------------------------------------------------------
+#define FREE_LIST_CONTENTS(listName)                                \
+    while (!listName.empty())                                       \
+    {                                                               \
+        auto removed = listName.front();                            \
+        listName.remove(removed);                                   \
+        SAFE_DELETE(removed);                                       \
+    }
+
 #endif
