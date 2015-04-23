@@ -30,10 +30,10 @@ bool            doVsync             = true;
 unsigned int    maxFPS              = 60;
 
 // =============================================================================
-// GameOptions::Init
+// GameOptions::ReadConfig
 // Read the config from a file
 // -----------------------------------------------------------------------------
-void Init()
+void ReadConfig()
 {
     XMLInterpreter::ReadConfig("config.xml");
 }

@@ -26,7 +26,7 @@ namespace GameOptions
     extern bool         doVsync;
     extern unsigned int maxFPS;
 
-    extern void Init();
+    extern void ReadConfig();
 };
 
 #endif /* defined(__TimeGameLib__GameOptions__) */

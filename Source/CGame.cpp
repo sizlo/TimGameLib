@@ -72,7 +72,8 @@ CGame::~CGame()
 void CGame::Init(int initialGameLocation)
 {
     // Initialise game options
-    GameOptions::Init();
+    GameOptions::ReadConfig();
+    InitialiseOptions();
 
     // Create the game window
     mWindow = new CWindow(GameOptions::windowWidth,
@@ -142,6 +143,15 @@ void CGame::Init(int initialGameLocation)
     
     // Enter the initial location
     GoToLocation(initialGameLocation);
+}
+
+// =============================================================================
+// CGame::InitialiseOptions
+// Initialise any game options, called after the config file is read
+// -----------------------------------------------------------------------------
+void CGame::InitialiseOptions()
+{
+    // Do nothing, this is game specific
 }
 
 // =============================================================================

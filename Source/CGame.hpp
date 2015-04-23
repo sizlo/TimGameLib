@@ -47,6 +47,8 @@ public:
     
     // Initialise the game
     virtual void Init(int initialGameLocation);
+    // Initialise any options
+    virtual void InitialiseOptions();
     // Enter the main loop, returns program exit code
     virtual int Run();
     // Cleanup before quitting
