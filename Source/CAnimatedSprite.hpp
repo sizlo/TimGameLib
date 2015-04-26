@@ -32,11 +32,13 @@ public:
     
     void AddFrame(CIntRect theRect, CTime theDuration);
     
+    int GetCurrentFrameIndex();
+    
 private:
     void AdvanceFrame();
     
-    std::list<SAnimationFrame>              mFrames;
-    std::list<SAnimationFrame>::iterator    mCurrentFrame;
+    std::vector<SAnimationFrame>              mFrames;
+    std::vector<SAnimationFrame>::iterator    mCurrentFrame;
     
     CTime mTotalElapsedTime;
     

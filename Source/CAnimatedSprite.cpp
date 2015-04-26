@@ -59,6 +59,11 @@ void CAnimatedSprite::AddFrame(CIntRect theRect, CTime theDuration)
     mFrames.push_back(theFrame);
 }
 
+int CAnimatedSprite::GetCurrentFrameIndex()
+{
+    return (int)(mCurrentFrame - mFrames.begin());
+}
+
 void CAnimatedSprite::AdvanceFrame()
 {
     mTotalElapsedTime -= mCurrentFrame->duration;
