@@ -66,7 +66,13 @@ std::list<CLine> CConvexShape::GetGlobalLines()
 // -----------------------------------------------------------------------------
 CVector2f CConvexShape::GetGlobalPoint(unsigned int index)
 {
-    return getPosition() + getPoint(index);
+    CVector2f localPoint = getPoint(index);
+    CVector2f scaledPoint = localPoint;
+    CVector2f scale = getScale();
+    scaledPoint.x *= scale.x;
+    scaledPoint.y *= scale.y;
+    
+    return getPosition() + scaledPoint;
 }
 
 // =============================================================================
