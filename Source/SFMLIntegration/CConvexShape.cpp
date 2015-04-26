@@ -51,8 +51,8 @@ std::list<CLine> CConvexShape::GetGlobalLines()
     
     for (int i = 0; i < numPoints; i++)
     {
-        CVector2f start = pos + getPoint(i);
-        CVector2f end = pos + getPoint((i+1) % numPoints);
+        CVector2f start = GetGlobalPoint(i);
+        CVector2f end = GetGlobalPoint((i+1) % numPoints);
         
         theResult.push_back(CLine(start, end));
     }
