@@ -29,7 +29,7 @@ public:
     
 private:
     static std::list<CMessageListener<T> *> smSubscribers;
-    static std::list<SSubcriptionRequest<T>> smPendingRequests;
+    static std::list<SSubcriptionRequest<T> > smPendingRequests;
     static bool smIsBroadcasting;
 };
 
@@ -37,7 +37,7 @@ template <typename T>
 std::list<CMessageListener<T> *> CMessageBroadcaster<T>::smSubscribers;
 
 template <typename T>
-std::list<SSubcriptionRequest<T>> CMessageBroadcaster<T>::smPendingRequests;
+std::list<SSubcriptionRequest<T> > CMessageBroadcaster<T>::smPendingRequests;
 
 template <typename T>
 bool CMessageBroadcaster<T>::smIsBroadcasting = false;

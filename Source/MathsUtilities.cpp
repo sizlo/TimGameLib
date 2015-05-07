@@ -8,6 +8,7 @@
 
 #include "MathsUtilities.hpp"
 #include <random>
+#include <functional>
 
 namespace MathsUtilities
 {
