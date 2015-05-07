@@ -52,7 +52,7 @@ public:
 // Include the method definitions since they are required prior to instantiating
 // a template class
 // -----------------------------------------------------------------------------
-#include "CVector2.cpp"
+#include "CVector2.inl"
 
 // =============================================================================
 // Common typedefs
