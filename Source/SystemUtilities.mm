@@ -9,6 +9,10 @@
 // =============================================================================
 // Include Files
 // -----------------------------------------------------------------------------
+// Explicitly include the prefix file as cotire for cmake doesn't auto include
+// it for .mm
+#include "TimGameLib_Prefix.pch"
+
 #include "SystemUtilities.hpp"
 
 #if TGL_MAC

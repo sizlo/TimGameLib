@@ -25,6 +25,6 @@ list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CTi
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CVertex.cpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CView.cpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CWindow.cpp)
-list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SystemUtilities.cpp)
+list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SystemUtilities.mm)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/TextUtilties.cpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/XMLInterpreter.cpp)
