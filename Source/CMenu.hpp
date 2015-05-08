@@ -36,14 +36,4 @@ public:
     virtual void Exit();
 };
 
-void CMenu::Enter()
-{
-    CMessageBroadcaster<CEvent>::Subscribe(this);
-}
-
-void CMenu::Exit()
-{
-    CMessageBroadcaster<CEvent>::Unsubscribe(this);
-}
-
 #endif
