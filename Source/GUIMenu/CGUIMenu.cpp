@@ -55,19 +55,19 @@ void CGUIMenu::Exit()
 
 bool CGUIMenu::HandleMessage(CEvent theEvent)
 {
-    bool theResult = false;
+    bool messageEaten = false;
     
     if (theEvent.type == CEvent::KeyPressed)
     {
         if (theEvent.key.code == CKeyboard::W
             || theEvent.key.code == CKeyboard::Up)
         {
-            theResult = MoveSelectionUp();
+            messageEaten = MoveSelectionUp();
         }
         else if (theEvent.key.code == CKeyboard::S
                  || theEvent.key.code == CKeyboard::Down)
         {
-            theResult = MoveSelectionDown();
+            messageEaten = MoveSelectionDown();
         }
     }
     else if (theEvent.type == CEvent::MouseMoved)
@@ -78,7 +78,12 @@ bool CGUIMenu::HandleMessage(CEvent theEvent)
         }
     }
     
-    return theResult;
+    if (!messageEaten)
+    {
+        (*mCurrentSelection)->HandleMessage(theEvent);
+    }
+    
+    return messageEaten;
 }
 
 void CGUIMenu::AddWidget(CWidget *theWidget)
