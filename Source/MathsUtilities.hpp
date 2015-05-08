@@ -13,8 +13,8 @@
 
 namespace MathsUtilities
 {
-    std::function<unsigned int()> GetRandomGeneratorFunctionForRange(int min,
-                                                                     int max);
+    std::function<int()> GetRandomGeneratorFunctionForRange(int min, int max);
+    std::function<float()> GetRandomGeneratorFunctionForRange(float min, float max);
 }
 
 #endif /* defined(__TimGameLib__MathsUtilities__) */

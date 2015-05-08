@@ -13,12 +13,20 @@
 namespace MathsUtilities
 {
     
-std::function<unsigned int()> GetRandomGeneratorFunctionForRange(int min,
-                                                                 int max)
+std::function<int()> GetRandomGeneratorFunctionForRange(int min, int max)
 {
     std::random_device device;
     std::default_random_engine generator(device());
     std::uniform_int_distribution<int> distribution(min, max);
+    auto result = std::bind(distribution, generator);
+    return result;
+}
+
+std::function<float()> GetRandomGeneratorFunctionForRange(float min, float max)
+{
+    std::random_device device;
+    std::default_random_engine generator(device());
+    std::uniform_int_distribution<float> distribution(min, max);
     auto result = std::bind(distribution, generator);
     return result;
 }
