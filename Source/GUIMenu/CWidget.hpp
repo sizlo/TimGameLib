@@ -33,6 +33,8 @@ public:
     
     virtual bool IsBlockingFocusChange();
     
+    virtual CFloatRect GetBounds();
+    
 protected:
     float mLeft;
     float mTop;

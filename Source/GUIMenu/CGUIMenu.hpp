@@ -26,11 +26,15 @@ public:
     
     virtual bool HandleMessage(CEvent theEvent);
     
-    void AddWidget(CWidget theWidget);
+    void AddWidget(CWidget *theWidget);
     
 private:
-    std::list<CWidget>              mWidgets;
-    std::list<CWidget>::iterator    mCurrentSelection;
+    bool MoveSelectionUp();
+    bool MoveSelectionDown();
+    void SelectOptionUnderMouse(CVector2i windowPosition);
+    
+    std::list<CWidget *>              mWidgets;
+    std::list<CWidget *>::iterator    mCurrentSelection;
 };
 
 #endif // __TimeGameLib__CGUIMenu__

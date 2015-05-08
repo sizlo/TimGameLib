@@ -8,6 +8,7 @@
 
 #include "CGUIMenu.hpp"
 #include "CGame.hpp"
+#include "../SystemUtilities.hpp"
 
 CGUIMenu::CGUIMenu()
 {
@@ -16,7 +17,7 @@ CGUIMenu::CGUIMenu()
 
 CGUIMenu::~CGUIMenu()
 {
-    
+    FREE_LIST_CONTENTS(mWidgets);
 }
 
 void CGUIMenu::Update(CTime elapsedTime)
@@ -26,12 +27,12 @@ void CGUIMenu::Update(CTime elapsedTime)
 
 void CGUIMenu::Draw(CWindow *theWindow)
 {
-    for (CWidget w : mWidgets)
+    for (CWidget *w : mWidgets)
     {
-        w.Draw(theWindow);
+        w->Draw(theWindow);
     }
     
-    mCurrentSelection->DrawHighlight(theWindow);
+    (*mCurrentSelection)->DrawHighlight(theWindow);
 }
 
 void CGUIMenu::Enter()
@@ -58,27 +59,80 @@ bool CGUIMenu::HandleMessage(CEvent theEvent)
     
     if (theEvent.type == CEvent::KeyPressed)
     {
-        if (theEvent.key.code == CKeyboard::W)
+        if (theEvent.key.code == CKeyboard::W
+            || theEvent.key.code == CKeyboard::Up)
         {
-            if (mCurrentSelection != mWidgets.begin())
-            {
-                mCurrentSelection--;
-            }
+            theResult = MoveSelectionUp();
         }
-        else if (theEvent.key.code == CKeyboard::S)
+        else if (theEvent.key.code == CKeyboard::S
+                 || theEvent.key.code == CKeyboard::Down)
         {
-            mCurrentSelection++;
-            if (mCurrentSelection == mWidgets.end())
-            {
-                mCurrentSelection--;
-            }
+            theResult = MoveSelectionDown();
+        }
+    }
+    else if (theEvent.type == CEvent::MouseMoved)
+    {
+        if (!(*mCurrentSelection)->IsBlockingFocusChange())
+        {
+            SelectOptionUnderMouse(CVector2i(theEvent.mouseMove.x, theEvent.mouseMove.y));
         }
     }
     
     return theResult;
 }
 
-void CGUIMenu::AddWidget(CWidget theWidget)
+void CGUIMenu::AddWidget(CWidget *theWidget)
 {
     mWidgets.push_back(theWidget);
+}
+
+bool CGUIMenu::MoveSelectionUp()
+{
+    bool didMove = false;
+    
+    if (!(*mCurrentSelection)->IsBlockingFocusChange())
+    {
+        if (mCurrentSelection != mWidgets.begin())
+        {
+            mCurrentSelection--;
+            didMove = true;
+        }
+    }
+    
+    return didMove;
+}
+
+bool CGUIMenu::MoveSelectionDown()
+{
+    bool didMove = false;
+    
+    if (!(*mCurrentSelection)->IsBlockingFocusChange())
+    {
+        mCurrentSelection++;
+        if (mCurrentSelection == mWidgets.end())
+        {
+            mCurrentSelection--;
+        }
+        else
+        {
+            didMove = true;
+        }
+    }
+    
+    return didMove;
+}
+
+void CGUIMenu::SelectOptionUnderMouse(CVector2i windowPosition)
+{
+    CVector2f viewPosition = SystemUtilities::GetViewPosition(windowPosition);
+    
+    for (std::list<CWidget *>::iterator w = mWidgets.begin();
+         w != mWidgets.end();
+         w++)
+    {
+        if ((*w)->GetBounds().contains(viewPosition))
+        {
+            mCurrentSelection = w;
+        }
+    }
 }

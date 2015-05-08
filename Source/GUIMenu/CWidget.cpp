@@ -31,7 +31,8 @@ CWidget::CWidget(float left,
     mOutlineShape.setFillColor(CColour(0, 0, 0, 0));
     
     mLabel = CText(mLabelString, *(TextUtilities::GetFont(kFontTypeDefault)), 30);
-    mLabel.setOrigin(0.0f, mLabel.getLocalBounds().height / 2.0f);
+    CFloatRect labelBounds = mLabel.getGlobalBounds();
+    mLabel.setOrigin(0.0f, labelBounds.top + (labelBounds.height / 2.0f));
     float xPos = mLeft + 10.0f;
     float yPos = mTop + (mHeight / 2.0f);
     mLabel.setPosition(xPos, yPos);
@@ -69,4 +70,9 @@ bool CWidget::HandleMessage(CEvent theEvent)
 bool CWidget::IsBlockingFocusChange()
 {
     return false;
+}
+
+CFloatRect CWidget::GetBounds()
+{
+    return CFloatRect(mLeft, mTop, mWidth, mHeight);
 }

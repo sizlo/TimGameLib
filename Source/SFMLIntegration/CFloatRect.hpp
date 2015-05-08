@@ -13,6 +13,7 @@
 // Include files
 // -----------------------------------------------------------------------------
 #include <SFML/Graphics.hpp>
+#include "CConvexShape.hpp"
 
 // =============================================================================
 // Class definition
@@ -24,6 +25,8 @@ public:
     CFloatRect(sf::FloatRect other);
     CFloatRect(float left, float top, float width, float height);
     ~CFloatRect();
+    
+    CConvexShape GetOutlineShape();
 };
 
 #endif /* defined(__TimeGameLib__CFloatRect__) */
