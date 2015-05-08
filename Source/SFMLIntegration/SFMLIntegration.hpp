@@ -41,21 +41,25 @@
 // =============================================================================
 // Helper methods
 // -----------------------------------------------------------------------------
-static void InitSFML(sf::Window *theWindow)
+class SFMLInitialiser
 {
-    DEBUG_LOG("Initialising SFML v%d.%d.%d", SFML_VERSION_MAJOR, SFML_VERSION_MINOR, SFML_VERSION_PATCH);
+public:
+    static void InitSFML(sf::Window *theWindow)
+    {
+        DEBUG_LOG("Initialising SFML v%d.%d.%d", SFML_VERSION_MAJOR, SFML_VERSION_MINOR, SFML_VERSION_PATCH);
 
-    // When we're not in debug mode redirect SFML errors to nowhere
-#if !TGL_DEBUG
-    sf::err().rdbuf(NULL);
-#endif
-    
-    // Don't repeat keypress events
-    theWindow->setKeyRepeatEnabled(false);
-    
-#if USE_SFML_VSYNC
-    theWindow->setVerticalSyncEnabled(GameOptions::doVsync);
-#endif
-}
+        // When we're not in debug mode redirect SFML errors to nowhere
+    #if !TGL_DEBUG
+        sf::err().rdbuf(NULL);
+    #endif
+        
+        // Don't repeat keypress events
+        theWindow->setKeyRepeatEnabled(false);
+        
+    #if USE_SFML_VSYNC
+        theWindow->setVerticalSyncEnabled(GameOptions::doVsync);
+    #endif
+    }
+};
 
 #endif

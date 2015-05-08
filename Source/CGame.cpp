@@ -134,7 +134,7 @@ void CGame::Init(int initialGameLocation)
     
     // Initialise other systems
     SystemUtilities::Init(mWindow);
-    InitSFML(mWindow);
+    SFMLInitialiser::InitSFML(mWindow);
     
     // Create and register any lifetime objects
 #if TGL_DEBUG

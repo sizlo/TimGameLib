@@ -20,6 +20,7 @@
 class CRenderable
 {
 public:
+    virtual ~CRenderable(){};
     virtual void Draw(CWindow *theWindow) = 0;
 };
 
