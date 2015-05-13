@@ -26,7 +26,7 @@ std::function<float()> GetRandomGeneratorFunctionForRange(float min, float max)
 {
     std::random_device device;
     std::default_random_engine generator(device());
-    std::uniform_int_distribution<float> distribution(min, max);
+    std::uniform_real_distribution<float> distribution(min, max);
     auto result = std::bind(distribution, generator);
     return result;
 }
