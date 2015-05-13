@@ -25,6 +25,8 @@ public:
     
     virtual bool HandleMessage(CEvent theEvent);
 private:
+    void PressButton();
+
     std::function<void()> mCallback;
 };
 

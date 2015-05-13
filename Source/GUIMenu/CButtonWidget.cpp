@@ -7,6 +7,7 @@
 //
 
 #include "CButtonWidget.hpp"
+#include "SystemUtilities.hpp"
 
 CButtonWidget::CButtonWidget(float left,
                              float top,
@@ -38,12 +39,34 @@ bool CButtonWidget::HandleMessage(CEvent theEvent)
     
     if (theEvent.type == CEvent::KeyPressed)
     {
-        if (theEvent.key.code == CKeyboard::Return)
+        if (theEvent.key.code == CKeyboard::Return
+            || theEvent.key.code == CKeyboard::Space)
         {
-            mCallback();
+            PressButton();
             messageEaten = true;
+        }
+    }
+    else if (theEvent.type == CEvent::MouseButtonPressed)
+    {
+        if (theEvent.mouseButton.button == CMouse::Left)
+        {
+            // Make sure the cursor is inside the button
+            CVector2i windowPos;
+            windowPos.x = theEvent.mouseButton.x;
+            windowPos.y = theEvent.mouseButton.y;
+            CVector2f viewPos = SystemUtilities::GetViewPosition(windowPos);
+            if (CFloatRect(mLeft, mTop, mWidth, mHeight).contains(viewPos))
+            {
+                PressButton();
+                messageEaten = true;
+            }
         }
     }
     
     return messageEaten;
+}
+
+void CButtonWidget::PressButton()
+{
+    mCallback();
 }
