@@ -52,7 +52,8 @@ CGame::CGame(std::string theTitle)
     mExitCode(EXIT_SUCCESS),
     mExitRequested(false),
     mGameState((EGameState)0),
-    mCurrentLocation(NULL)
+    mCurrentLocation(NULL),
+    mNextLocation(NULL)
 {
     if (smInstance == NULL)
     {
@@ -189,6 +190,12 @@ int CGame::Run()
 #else
         Render();
 #endif
+
+        // If we requested a new location switch to it
+        if (mNextLocation != NULL)
+        {
+            SwitchLocation();
+        }
     }
     
     return mExitCode;
@@ -326,6 +333,26 @@ CDebugHelper * CGame::GetDebugHelper()
 void CGame::GoToLocation(int theLocation,
                          std::string filename /* = std::string() */)
 {
+    // Set up the next location, we'll move there at the end of this update
+    switch (theLocation)
+    {
+        case kGameLocationDummy:
+            DEBUG_LOG("Dummy location requested");
+            mNextLocation = new CDummyGameLocation();
+            break;
+            
+        default:
+            DEBUG_LOG("Unimplemented game location - going to dummy location");
+            mNextLocation = new CDummyGameLocation();
+            break;
+    }
+}
+
+// =============================================================================
+// CGame::SwitchLocation
+// -----------------------------------------------------------------------------
+void CGame::SwitchLocation()
+{
     // If we're already in a location leave it
     if (mCurrentLocation != NULL)
     {
@@ -333,19 +360,9 @@ void CGame::GoToLocation(int theLocation,
         SAFE_DELETE(mCurrentLocation);
     }
     
-    switch (theLocation)
-    {
-        case kGameLocationDummy:
-            DEBUG_LOG("Dummy location requested");
-            mCurrentLocation = new CDummyGameLocation();
-            break;
-            
-        default:
-            DEBUG_LOG("Unimplemented game location - going to dummy location");
-            mCurrentLocation = new CDummyGameLocation();
-            break;
-    }
-    
+    // Now switch to the next location and enter it
+    mCurrentLocation = mNextLocation;
+    mNextLocation = NULL;
     mCurrentLocation->Enter();
 }
 

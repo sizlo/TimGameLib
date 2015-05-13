@@ -81,6 +81,9 @@ protected:
     void Update(CTime elapsedTime);
     // Render all CRenderables registered
     void Render();
+
+    // Switch to the next game location
+    void SwitchLocation();
     
     // The game window
     std::string mWindowTitle;
@@ -114,6 +117,7 @@ protected:
     
     // The current game location (menu/level)
     CGameLocation *mCurrentLocation;
+    CGameLocation *mNextLocation;
     
     // Singleton instance
     static CGame *smInstance;
