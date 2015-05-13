@@ -80,7 +80,7 @@ bool CGUIMenu::HandleMessage(CEvent theEvent)
     
     if (!messageEaten)
     {
-        (*mCurrentSelection)->HandleMessage(theEvent);
+        messageEaten = (*mCurrentSelection)->HandleMessage(theEvent);
     }
     
     return messageEaten;

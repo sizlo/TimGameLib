@@ -10,6 +10,7 @@
 #define __TimeGameLib__CButtonWidget__
 
 #include "CWidget.hpp"
+#include <functional>
 
 class CButtonWidget : public CWidget
 {
@@ -18,8 +19,13 @@ public:
                   float top,
                   float width,
                   float height,
-                  std::string label);
+                  std::string label,
+                  std::function<void()> callback);
     ~CButtonWidget();
+    
+    virtual bool HandleMessage(CEvent theEvent);
+private:
+    std::function<void()> mCallback;
 };
 
 #endif // __TimeGameLib__CButtonWidget__
