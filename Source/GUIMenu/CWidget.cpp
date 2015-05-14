@@ -20,12 +20,8 @@ CWidget::CWidget(float left,
     mHeight(height),
     mLabelString(label)
 {
-    mOutlineShape = CConvexShape(4);
-    mOutlineShape.setPoint(0, CVector2f(mLeft, mTop));
-    mOutlineShape.setPoint(1, CVector2f(mLeft + mWidth, mTop));
-    mOutlineShape.setPoint(2, CVector2f(mLeft + mWidth, mTop + mHeight));
-    mOutlineShape.setPoint(3, CVector2f(mLeft, mTop + mHeight));
-    
+    mOutlineShape = CRectangleShape(mWidth, mHeight);
+    mOutlineShape.setPosition(mLeft, mTop);
     mOutlineShape.setOutlineThickness(1.0f);
     mOutlineShape.setOutlineColor(CColour::Black);
     mOutlineShape.setFillColor(CColour(0, 0, 0, 0));

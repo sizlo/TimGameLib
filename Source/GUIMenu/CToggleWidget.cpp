@@ -23,11 +23,8 @@ CToggleWidget::CToggleWidget(float left,
     float outerSize = mHeight - (2 * outerGap);
     float outerLeft = (mLeft + mWidth) - (outerGap + outerSize);
     float outerTop = mTop + outerGap;
-    mOuterSquare = CConvexShape(4);
-    mOuterSquare.setPoint(0, CVector2f(outerLeft, outerTop));
-    mOuterSquare.setPoint(1, CVector2f(outerLeft + outerSize, outerTop));
-    mOuterSquare.setPoint(2, CVector2f(outerLeft + outerSize, outerTop + outerSize));
-    mOuterSquare.setPoint(3, CVector2f(outerLeft, outerTop + outerSize));
+    mOuterSquare = CRectangleShape(outerSize, outerSize);
+    mOuterSquare.setPosition(outerLeft, outerTop);
     mOuterSquare.setOutlineColor(CColour::Black);
     mOuterSquare.setOutlineThickness(1.0f);
     mOuterSquare.setFillColor(CColour(0, 0, 0, 0));
@@ -36,11 +33,8 @@ CToggleWidget::CToggleWidget(float left,
     float innerSize = outerSize - (2 * innerGap);
     float innerLeft = outerLeft + innerGap;
     float innerTop = outerTop + innerGap;
-    mInnerSquare = CConvexShape(4);
-    mInnerSquare.setPoint(0, CVector2f(innerLeft, innerTop));
-    mInnerSquare.setPoint(1, CVector2f(innerLeft + innerSize, innerTop));
-    mInnerSquare.setPoint(2, CVector2f(innerLeft + innerSize, innerTop + innerSize));
-    mInnerSquare.setPoint(3, CVector2f(innerLeft, innerTop + innerSize));
+    mInnerSquare = CRectangleShape(innerSize, innerSize);
+    mInnerSquare.setPosition(innerLeft, innerTop);
     mInnerSquare.setFillColor(CColour::Black);
 }
 

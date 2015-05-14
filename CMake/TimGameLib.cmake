@@ -56,6 +56,8 @@ list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CKe
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CMouse.hpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CMusic.cpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CMusic.hpp)
+list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CRectangleShape.cpp)
+list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CRectangleShape.hpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CSprite.cpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CSprite.hpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/SFMLIntegration/CText.cpp)
