@@ -26,7 +26,7 @@ public:
     
     virtual bool HandleMessage(CEvent theEvent);
     
-    bool GetState();
+    bool GetValue();
     
 private:
     void ToggleState();

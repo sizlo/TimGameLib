@@ -93,7 +93,7 @@ bool CToggleWidget::HandleMessage(CEvent theEvent)
     return messageEaten;
 }
 
-bool CToggleWidget::GetState()
+bool CToggleWidget::GetValue()
 {
     return mState;
 }
