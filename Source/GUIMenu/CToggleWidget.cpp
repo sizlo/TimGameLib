@@ -93,6 +93,11 @@ bool CToggleWidget::HandleMessage(CEvent theEvent)
     return messageEaten;
 }
 
+bool CToggleWidget::GetState()
+{
+    return mState;
+}
+
 void CToggleWidget::ToggleState()
 {
     mState = !mState;
