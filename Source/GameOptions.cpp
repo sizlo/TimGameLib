@@ -28,6 +28,7 @@ bool            fullscreen          = false;
 bool            preserveAspect      = true;
 bool            doVsync             = true;
 unsigned int    maxFPS              = 60;
+int             antiAliasingLevel   = 8;
 
 // =============================================================================
 // GameOptions::ReadConfig

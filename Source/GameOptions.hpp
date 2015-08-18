@@ -25,6 +25,7 @@ namespace GameOptions
     extern bool         preserveAspect;
     extern bool         doVsync;
     extern unsigned int maxFPS;
+    extern int          antiAliasingLevel;
 
     extern void ReadConfig();
 };
