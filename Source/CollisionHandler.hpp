@@ -63,8 +63,6 @@ namespace CollisionHandler
     void Seperate(CConvexShape &lhs,
                   CConvexShape &rhs,
                   CVector2f correctionVector,
-                  float friction,
-                  float elasticity,
                   ECollisionResolveOptions theOptions);
 }
 

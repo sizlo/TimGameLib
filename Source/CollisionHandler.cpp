@@ -318,8 +318,6 @@ float Project(CVector2f point, CVector2f axis)
 void Seperate(CConvexShape &lhs,
               CConvexShape &rhs,
               CVector2f correctionVector,
-              float friction,
-              float elasticity,
               ECollisionResolveOptions theOptions)
 {
     // Move either one or both of the shapes by the correction vector so they
