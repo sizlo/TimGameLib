@@ -80,8 +80,9 @@ void CGame::Init(int initialGameLocation)
     mWindow = new CWindow(GameOptions::windowWidth,
                           GameOptions::windowHeight,
                           mWindowTitle,
-                          GameOptions::fullscreen);
-    
+                          GameOptions::fullscreen,
+                          GameOptions::antiAliasingLevel);
+        
     // Use a view to make the game resolution independant
     CView theView(CFloatRect(GameOptions::viewLeft, GameOptions::viewTop,
                              GameOptions::viewWidth, GameOptions::viewHeight));
