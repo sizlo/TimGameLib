@@ -34,6 +34,9 @@ public:
     // Normalise a vector to unit length 1
     void Normalise();
     
+    // Rotate a vector by angle degrees
+    void Rotate(float angle);
+    
     // Get the dot product of this and another vector
     T DotProduct(CVector2<T> rhs);
     

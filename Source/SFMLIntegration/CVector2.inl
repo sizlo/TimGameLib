@@ -78,6 +78,20 @@ void CVector2<T>::Normalise()
 }
 
 // =============================================================================
+// CVector2::Rotate
+// -----------------------------------------------------------------------------
+template <typename T>
+void CVector2<T>::Rotate(float angle)
+{
+    angle *= DEG_TO_RAD;
+    
+    float newX = this->x * cos(angle) - this->y * sin(angle);
+    float newY = this->x * sin(angle) + this->y * cos(angle);
+    this->x = newX;
+    this->y = newY;
+}
+
+// =============================================================================
 // CVector2::DotProduct
 // -----------------------------------------------------------------------------
 template <typename T>
