@@ -22,6 +22,7 @@ class CView : public sf::View
 public:
     CView();
     CView(CFloatRect theRect);
+    CView(const sf::View &theView);
     ~CView();
 };
 

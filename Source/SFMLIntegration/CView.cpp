@@ -24,6 +24,11 @@ CView::CView(CFloatRect theRect) : sf::View(theRect)
     
 }
 
+CView::CView(const sf::View &theView) : sf::View(theView)
+{
+    
+}
+
 CView::~CView()
 {
     
