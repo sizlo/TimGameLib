@@ -9,8 +9,9 @@
 #include "CRectangleShape.hpp"
 
 CRectangleShape::CRectangleShape(CVector2f size)
+: CRectangleShape(size.x, size.y)
 {
-    CRectangleShape(size.x, size.y);
+
 }
 
 CRectangleShape::CRectangleShape(float width, float height)
