@@ -28,7 +28,8 @@ public:
     CWindow(unsigned int width, 
             unsigned int height, 
             std::string title,
-            bool fullscreen);
+            bool fullscreen,
+            int aaLevel);
     ~CWindow();
     // Draw text at a specific location on screen
     void DrawTextAt(std::string theString,
