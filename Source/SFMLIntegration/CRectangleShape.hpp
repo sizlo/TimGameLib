@@ -23,8 +23,8 @@
 class CRectangleShape : public CConvexShape
 {
 public:
-    CRectangleShape(CVector2f size);
-    CRectangleShape(float width, float height);
+    CRectangleShape(CVector2f size, bool centreOrigin = false);
+    CRectangleShape(float width, float height, bool centreOrigin = false);
     ~CRectangleShape();
 };
 
