@@ -31,6 +31,9 @@ public:
     // Get the magnitude of the vector
     T GetMagnitude();
     
+    // Get the direction (normalised version of) of the vector
+    CVector2<T> GetDirection();
+    
     // Normalise a vector to unit length 1
     void Normalise();
     

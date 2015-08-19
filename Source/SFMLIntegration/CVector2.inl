@@ -60,6 +60,17 @@ T CVector2<T>::GetMagnitude()
 }
 
 // =============================================================================
+// CVector2::GetDirection
+// -----------------------------------------------------------------------------
+template <typename T>
+CVector2<T> CVector2<T>::GetDirection()
+{
+    CVector2<T> direction(this->x, this->y);
+    direction.Normalise();
+    return direction;
+}
+
+// =============================================================================
 // CVector2::Normalise
 // -----------------------------------------------------------------------------
 template <typename T>
