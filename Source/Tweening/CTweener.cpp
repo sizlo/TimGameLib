@@ -60,3 +60,8 @@ CTime CTweener::GetDuration()
 {
     return mDuration;
 }
+
+bool CTweener::IsDone()
+{
+    return mCurrentTime >= mDuration;
+}

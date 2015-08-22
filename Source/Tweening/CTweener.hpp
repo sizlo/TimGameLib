@@ -18,6 +18,8 @@ public:
     CTime GetCurrentTime();
     CTime GetDuration();
     
+    bool IsDone();
+    
 private:
     TEasingFunction mEasingFunction;
     CTime mDuration;
