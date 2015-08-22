@@ -53,6 +53,16 @@ int CXMLInterpreter::GetInt(pugi::xml_node theRoot)
 }
 
 // =============================================================================
+// CXMLInterpreter::GetFloat
+// -----------------------------------------------------------------------------
+float CXMLInterpreter::GetFloat(pugi::xml_node theRoot)
+{
+    float theResult = 0.0f;
+    theResult = theRoot.text().as_float();
+    return theResult;
+}
+
+// =============================================================================
 // CXMLInterpreter::GetBool
 // -----------------------------------------------------------------------------
 bool CXMLInterpreter::GetBool(pugi::xml_node theRoot)

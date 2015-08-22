@@ -44,6 +44,7 @@ public:
 protected:
     // Get a given data type from an xml node
     int             GetInt          (pugi::xml_node theRoot);
+    float           GetFloat        (pugi::xml_node theRoot);
     bool            GetBool         (pugi::xml_node theRoot);
     CVector2f       GetVector2f     (pugi::xml_node theRoot);
     CTime           GetTime         (pugi::xml_node theRoot);
