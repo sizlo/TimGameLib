@@ -28,4 +28,18 @@ public:
     ~CText();
 };
 
+// =============================================================================
+// Class definition
+// -----------------------------------------------------------------------------
+class CBoundedText : public CText
+{
+public:
+    CBoundedText();
+    CBoundedText(std::string theString,
+                 float maxWidth,
+                 CFont &theFont,
+                 unsigned int theFontSize);
+    ~CBoundedText();
+};
+
 #endif /* defined(__TimeGameLib__CText__) */
