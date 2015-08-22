@@ -68,6 +68,7 @@ void CMessageBroadcaster<T>::BroadcastMessage(T m)
             smSubscribers.remove(r.listener);
         }
     }
+    smPendingRequests.clear();
     
     smIsBroadcasting = false;
 }
