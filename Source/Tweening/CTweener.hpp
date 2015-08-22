@@ -8,6 +8,7 @@ typedef float (*TEasingFunction)(float, float, float, float);
 class CTweener
 {
 public:
+    CTweener();
     CTweener(TEasingFunction theFunction, float startValue, float endValue, CTime duration);
     ~CTweener();
     

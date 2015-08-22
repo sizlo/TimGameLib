@@ -1,4 +1,11 @@
 #include "CTweener.hpp"
+#include "Easings/Linear.hpp"
+
+CTweener::CTweener()
+: CTweener(Easings::Linear::easeIn, 0.0f, 1.0f, CTime::Seconds(1.0f))
+{
+    
+}
 
 CTweener::CTweener(TEasingFunction theFunction, float startValue, float endValue, CTime duration)
 {
@@ -34,7 +41,7 @@ float CTweener::Advance(CTime elapsedTime)
     }
     else
     {
-        mCurrentValue =  mEasingFunction(mCurrentTime.asSeconds(), mStartValue, mEndValue, mDuration.asSeconds());
+        mCurrentValue =  mEasingFunction(mCurrentTime.asSeconds(), mStartValue, mRange, mDuration.asSeconds());
     }
     return mCurrentValue;
 }
