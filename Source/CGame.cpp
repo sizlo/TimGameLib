@@ -210,10 +210,7 @@ void CGame::Cleanup()
     SAFE_DELETE(theDebugHelper);
 #endif
     
-    while (!mGameLocations.empty())
-    {
-        PopGameLocation();
-    }
+    ClearGameLocations();
     
     TextUtilities::Cleanup();
     CTextureBank::Cleanup();
@@ -367,6 +364,25 @@ void CGame::TryPopGameLocation()
         }
         // And mark the request done
         mLocationPopRequests--;
+    }
+}
+
+// =============================================================================
+// CGame::ClearGameLocations
+// Discard all current locations in the stack
+// -----------------------------------------------------------------------------
+void CGame::ClearGameLocations()
+{
+    if (!mGameLocations.empty())
+    {
+        mGameLocations.top()->Exit();
+    }
+    
+    while (!mGameLocations.empty())
+    {
+        CGameLocation *popped = mGameLocations.top();
+        mGameLocations.pop();
+        SAFE_DELETE(popped);
     }
 }
 

@@ -73,6 +73,7 @@ public:
     // Stack game locations
     virtual void PushGameLocation(CGameLocation *theLocation);
     virtual void PopGameLocation();
+    virtual void ClearGameLocations();
     
     static CDebugHelper * GetDebugHelper();
 protected:
