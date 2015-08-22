@@ -1,13 +1,13 @@
 //
-//  XMLInterpreter.hpp
+//  CXMLInterpreter.hpp
 //  TimGameLib
 //
 //  Created by Tim Brier on 11/10/2014.
 //  Copyright (c) 2014 tbrier. All rights reserved.
 //
 
-#ifndef __TimeGameLib__XMLInterpreter__
-#define __TimeGameLib__XMLInterpreter__
+#ifndef __TimeGameLib__CXMLInterpreter__
+#define __TimeGameLib__CXMLInterpreter__
 
 // =============================================================================
 // Include Files
@@ -33,17 +33,23 @@
 // =============================================================================
 // namespace definition
 // -----------------------------------------------------------------------------
-namespace XMLInterpreter
+class CXMLInterpreter
 {
-    // Set the game options from a config file
-    void ReadConfig(std::string filename);
+public:
+    CXMLInterpreter(std::string filename);
+    ~CXMLInterpreter();
     
+    bool LoadFile();
+    
+protected:
     // Get a given data type from an xml node
     int             GetInt          (pugi::xml_node theRoot);
     bool            GetBool         (pugi::xml_node theRoot);
     CVector2f       GetVector2f     (pugi::xml_node theRoot);
     CTime           GetTime         (pugi::xml_node theRoot);
-    CText           GetLevelText    (pugi::xml_node theRoot);
-}
+    
+    std::string mFilename;
+    pugi::xml_document mDocument;
+};
 
-#endif /* defined(__TimeGameLib__XMLInterpreter__) */
+#endif /* defined(__TimeGameLib__CXMLInterpreter__) */

@@ -10,7 +10,7 @@
 // Include Files
 // -----------------------------------------------------------------------------
 #include "GameOptions.hpp"
-#include "XMLInterpreter.hpp"
+#include "CConfigInterpreter.hpp"
 
 namespace GameOptions
 {
@@ -36,7 +36,11 @@ int             antiAliasingLevel   = 8;
 // -----------------------------------------------------------------------------
 void ReadConfig()
 {
-    XMLInterpreter::ReadConfig("config.xml");
+    CConfigInterpreter i("config.xml");
+    if (i.LoadFile())
+    {
+        i.Parse();
+    }
 }
 
 } // namespace GameOptions
