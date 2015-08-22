@@ -37,6 +37,7 @@ namespace DebugOptions
     extern bool drawShapeNormals;
     extern bool useSlowMotion;
     extern bool showMouseCoords;
+    extern bool skipScreenClear;
 };
 
 // =============================================================================

@@ -511,7 +511,14 @@ void CGame::Render()
     }
     
     // Clear the window
+#if TGL_DEBUG
+    if (!DebugOptions::skipScreenClear)
+    {
+        mWindow->clear(mClearColour);
+    }
+#else
     mWindow->clear(mClearColour);
+#endif
     
     // Iterate through all registered renderables, drawing them all
     FOR_EACH_IN_LIST(CRenderable *, mTheRenderables)

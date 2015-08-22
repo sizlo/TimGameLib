@@ -26,6 +26,7 @@ bool drawShapePoints        = false;
 bool drawShapeNormals       = false;
 bool useSlowMotion          = false;
 bool showMouseCoords        = false;
+bool skipScreenClear        = false;
 
 } // namespace DebugOptions
 
@@ -58,6 +59,7 @@ bool CDebugHelper::HandleMessage(CEvent theEvent)
         TOGGLE_DEBUG_OPTION(N, DebugOptions::drawShapeNormals);
         TOGGLE_DEBUG_OPTION(S, DebugOptions::useSlowMotion);
         TOGGLE_DEBUG_OPTION(M, DebugOptions::showMouseCoords);
+        TOGGLE_DEBUG_OPTION(C, DebugOptions::skipScreenClear);
     }
     
     return false;
