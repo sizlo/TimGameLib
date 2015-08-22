@@ -52,8 +52,7 @@ CGame::CGame(std::string theTitle)
     mExitCode(EXIT_SUCCESS),
     mExitRequested(false),
     mGameState((EGameState)0),
-    mCurrentLocation(NULL),
-    mNextLocation(NULL)
+    mLocationPopRequests(0)
 {
     if (smInstance == NULL)
     {
@@ -70,7 +69,7 @@ CGame::~CGame()
 // CGame::Init
 // Initialise the game
 // -----------------------------------------------------------------------------
-void CGame::Init(int initialGameLocation)
+void CGame::Init(CGameLocation *initialGameLocation)
 {
     // Initialise game options
     GameOptions::ReadConfig();
@@ -144,7 +143,7 @@ void CGame::Init(int initialGameLocation)
 #endif
     
     // Enter the initial location
-    GoToLocation(initialGameLocation);
+    PushGameLocation(initialGameLocation);
 }
 
 // =============================================================================
@@ -171,6 +170,10 @@ int CGame::Run()
     while (mWindow->isOpen())
     {
         ProcessEvents();
+     
+        // This will pop the current game location if requested
+        // We want to do this after processing events but before the update cycle
+        TryPopGameLocation();
         
         CTime timeSinceLastUpdate = theUpdateClock.restart();
         if (!mShouldSkipUpdateFrame)
@@ -191,12 +194,6 @@ int CGame::Run()
 #else
         Render();
 #endif
-
-        // If we requested a new location switch to it
-        if (mNextLocation != NULL)
-        {
-            SwitchLocation();
-        }
     }
     
     return mExitCode;
@@ -209,10 +206,15 @@ int CGame::Run()
 void CGame::Cleanup()
 {
     SAFE_DELETE(mWindow);
-    SAFE_DELETE(mCurrentLocation);
 #if TGL_DEBUG
     SAFE_DELETE(theDebugHelper);
 #endif
+    
+    while (!mGameLocations.empty())
+    {
+        PopGameLocation();
+    }
+    
     TextUtilities::Cleanup();
     CTextureBank::Cleanup();
 }
@@ -316,6 +318,59 @@ void CGame::UnregisterRenderable(CRenderable *theRenderable)
 }
 
 // =============================================================================
+// CGame::PushGameLocation
+// Add a new game location to the stack and enter it
+// -----------------------------------------------------------------------------
+void CGame::PushGameLocation(CGameLocation *theLocation)
+{
+    // Exit the current location
+    if (!mGameLocations.empty())
+    {
+        mGameLocations.top()->Exit();
+    }
+    
+    // Push the new one
+    mGameLocations.push(theLocation);
+    
+    // Enter the new one
+    mGameLocations.top()->Enter();
+}
+
+// =============================================================================
+// CGame::PopGameLocation
+// Remove the current game location from the stack and exit it
+// -----------------------------------------------------------------------------
+void CGame::PopGameLocation()
+{
+    // Don't actually pop now, do it before the next uodate cycle
+    mLocationPopRequests++;
+}
+
+// =============================================================================
+// CGame::TryPopLocation
+// Perform the actual popping of game locations
+// -----------------------------------------------------------------------------
+void CGame::TryPopGameLocation()
+{
+    while (mLocationPopRequests > 0)
+    {
+        // Exit the current location
+        CGameLocation *popped = mGameLocations.top();
+        popped->Exit();
+        // And pop it
+        mGameLocations.pop();
+        SAFE_DELETE(popped);
+        // And enter the previous game location
+        if (!mGameLocations.empty())
+        {
+            mGameLocations.top()->Enter();
+        }
+        // And mark the request done
+        mLocationPopRequests--;
+    }
+}
+
+// =============================================================================
 // CGame::GetDebugHelper
 // -----------------------------------------------------------------------------
 CDebugHelper * CGame::GetDebugHelper()
@@ -325,46 +380,6 @@ CDebugHelper * CGame::GetDebugHelper()
 #else
     return NULL;
 #endif
-}
-
-// =============================================================================
-// CGame::GoToLocation
-// Go to a game location (level/menu)
-// -----------------------------------------------------------------------------
-void CGame::GoToLocation(int theLocation,
-                         std::string filename /* = std::string() */)
-{
-    // Set up the next location, we'll move there at the end of this update
-    switch (theLocation)
-    {
-        case kGameLocationDummy:
-            DEBUG_LOG("Dummy location requested");
-            mNextLocation = new CDummyGameLocation();
-            break;
-            
-        default:
-            DEBUG_LOG("Unimplemented game location - going to dummy location");
-            mNextLocation = new CDummyGameLocation();
-            break;
-    }
-}
-
-// =============================================================================
-// CGame::SwitchLocation
-// -----------------------------------------------------------------------------
-void CGame::SwitchLocation()
-{
-    // If we're already in a location leave it
-    if (mCurrentLocation != NULL)
-    {
-        mCurrentLocation->Exit();
-        SAFE_DELETE(mCurrentLocation);
-    }
-    
-    // Now switch to the next location and enter it
-    mCurrentLocation = mNextLocation;
-    mNextLocation = NULL;
-    mCurrentLocation->Enter();
 }
 
 // =============================================================================
@@ -402,14 +417,8 @@ void CGame::ProcessEvents()
                 break;
 
             case CEvent::GainedFocus:
-                mCurrentLocation->ReactToFocusGained();
-                
                 // Skip a frame when we gain focus
                 mShouldSkipUpdateFrame = true;
-                break;
-
-            case CEvent::LostFocus:
-                mCurrentLocation->ReactToFocusLost();
                 break;
                 
             default:

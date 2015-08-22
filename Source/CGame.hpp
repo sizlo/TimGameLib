@@ -19,6 +19,7 @@
 #include "CGameLocation.hpp"
 #include "GameState.hpp"
 #include <list>
+#include <stack>
 
 // =============================================================================
 // Forward Declarations
@@ -46,7 +47,7 @@ public:
     ~CGame();
     
     // Initialise the game
-    virtual void Init(int initialGameLocation);
+    virtual void Init(CGameLocation *initialGameLocation);
     // Initialise any options
     virtual void InitialiseOptions();
     // Enter the main loop, returns program exit code
@@ -69,9 +70,9 @@ public:
     virtual void UnregisterUpdateable(CUpdateable    *theUpdateable);
     virtual void UnregisterRenderable(CRenderable    *theRenderable);
     
-    // Go to a game location
-    virtual void GoToLocation(int theLocation,
-                             std::string filename = std::string());
+    // Stack game locations
+    virtual void PushGameLocation(CGameLocation *theLocation);
+    virtual void PopGameLocation();
     
     static CDebugHelper * GetDebugHelper();
 protected:
@@ -81,9 +82,9 @@ protected:
     void Update(CTime elapsedTime);
     // Render all CRenderables registered
     void Render();
-
-    // Switch to the next game location
-    void SwitchLocation();
+    
+    // Actually perform any requested game location pops
+    void TryPopGameLocation();
     
     // The game window
     std::string mWindowTitle;
@@ -115,9 +116,9 @@ protected:
                                     mUpdateableRegistrationRequests;
     std::list<CRenderable *> mTheRenderables;
     
-    // The current game location (menu/level)
-    CGameLocation *mCurrentLocation;
-    CGameLocation *mNextLocation;
+    // Game location stack
+    std::stack<CGameLocation *> mGameLocations;
+    int mLocationPopRequests;
     
     // Singleton instance
     static CGame *smInstance;
