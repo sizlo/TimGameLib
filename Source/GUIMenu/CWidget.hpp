@@ -34,6 +34,8 @@ public:
     virtual bool IsBlockingFocusChange();
     
     virtual CFloatRect GetBounds();
+    virtual void SetActive(bool active);
+    virtual bool IsActive();
     
 protected:
     float mLeft;
@@ -46,6 +48,7 @@ protected:
 private:
     std::string mLabelString;
     CConvexShape mOutlineShape;
+    bool mActive;
 };
 
 #endif // __TimeGameLib__CWidget__

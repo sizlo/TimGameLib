@@ -33,6 +33,8 @@ CWidget::CWidget(float left,
     float yPos = mTop + (mHeight / 2.0f);
     mLabel.setPosition(xPos, yPos);
     mLabel.setColor(CColour::Black);
+    
+    mActive = true;
 }
 
 
@@ -71,4 +73,14 @@ bool CWidget::IsBlockingFocusChange()
 CFloatRect CWidget::GetBounds()
 {
     return CFloatRect(mLeft, mTop, mWidth, mHeight);
+}
+
+void CWidget::SetActive(bool active)
+{
+    mActive = active;
+}
+
+bool CWidget::IsActive()
+{
+    return mActive;
 }

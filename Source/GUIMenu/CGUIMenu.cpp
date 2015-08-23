@@ -88,7 +88,10 @@ bool CGUIMenu::HandleMessage(CEvent theEvent)
     
     if (!messageEaten)
     {
-        messageEaten = (*mCurrentSelection)->HandleMessage(theEvent);
+        if ((*mCurrentSelection)->IsActive())
+        {
+            messageEaten = (*mCurrentSelection)->HandleMessage(theEvent);
+        }
     }
     
     return messageEaten;

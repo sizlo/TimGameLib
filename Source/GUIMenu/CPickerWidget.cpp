@@ -58,8 +58,11 @@ void CPickerWidget::Draw(CWindow *theWindow)
 {
     CWidget::Draw(theWindow);
     
-    theWindow->DrawShape(mLeftButton);
-    theWindow->DrawShape(mRightButton);
+    if (IsActive())
+    {
+        theWindow->DrawShape(mLeftButton);
+        theWindow->DrawShape(mRightButton);
+    }
     theWindow->draw(mOptionText);
 }
 
