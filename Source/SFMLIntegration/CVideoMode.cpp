@@ -1,4 +1,5 @@
 #include "CVideoMode.hpp"
+#include <math.h>
 
 std::string aspectToString(float aspect)
 {
