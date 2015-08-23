@@ -28,6 +28,7 @@ namespace GameOptions
     extern int          antiAliasingLevel;
 
     extern void ReadConfig();
+    extern void WriteConfig();
 };
 
 #endif /* defined(__TimeGameLib__GameOptions__) */

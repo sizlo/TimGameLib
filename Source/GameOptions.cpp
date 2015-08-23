@@ -42,5 +42,15 @@ void ReadConfig()
         i.Parse();
     }
 }
+    
+// =============================================================================
+// GameOptions::ReadWrite
+// Write the config to file
+// -----------------------------------------------------------------------------
+void WriteConfig()
+{
+    CConfigInterpreter i("config.xml");
+    i.Write();
+}
 
 } // namespace GameOptions
