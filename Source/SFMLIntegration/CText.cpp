@@ -63,8 +63,14 @@ CBoundedText::CBoundedText(std::string theString,
     }
     
     // Build the string word by word, inserting a new line when it gets too long
-    std::string theBoundedString = words.front();
-    for (auto it = ++words.begin(); it != words.end(); it++)
+	std::string theBoundedString = "";
+	if (!words.empty())
+	{
+		theBoundedString += words.front();
+		words.pop_front();
+	}
+
+    for (auto it = words.begin(); it != words.end(); it++)
     {
         std::string word = *it;
         char delim = ' ';

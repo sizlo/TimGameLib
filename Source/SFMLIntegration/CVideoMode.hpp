@@ -12,8 +12,10 @@ public:
     ~CVideoMode();
     
     std::string AsString();
+	float GetAspectRatio();
     
-    static std::set<CVideoMode> GetModes();
+	static std::set<CVideoMode> GetModes();
+	static std::set<CVideoMode> GetModesWithAspectRatio(float aspect);
 };
 
 #endif // __TimGameLib__CVideoMode__

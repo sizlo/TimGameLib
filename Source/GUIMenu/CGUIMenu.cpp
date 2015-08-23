@@ -30,6 +30,11 @@ void CGUIMenu::Update(CTime elapsedTime)
 
 void CGUIMenu::Draw(CWindow *theWindow)
 {
+	// Draw a background
+	CRectangleShape bg(GameOptions::viewWidth, GameOptions::viewHeight);
+	bg.setFillColor(CColour::White);
+	theWindow->DrawShape(bg);
+
     for (CWidget *w : mWidgets)
     {
         w->Draw(theWindow);
