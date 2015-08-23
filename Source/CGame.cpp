@@ -72,20 +72,39 @@ CGame::~CGame()
 void CGame::Init(CGameLocation *initialGameLocation)
 {
     // Initialise game options
-    GameOptions::ReadConfig();
     InitialiseOptions();
 
+    CreateWindow();
+    
+    // Create and register any lifetime objects
+#if TGL_DEBUG
+    theDebugHelper = new CDebugHelper();
+#endif
+    
+    // Enter the initial location
+    PushGameLocation(initialGameLocation);
+}
+
+// =============================================================================
+// CGame::CreateWindow
+// Create the game window with any options (aa, vsync, etc)
+// -----------------------------------------------------------------------------
+void CGame::CreateWindow()
+{
+    // If a window already exists delte it
+    SAFE_DELETE(mWindow);
+    
     // Create the game window
     mWindow = new CWindow(GameOptions::windowWidth,
                           GameOptions::windowHeight,
                           mWindowTitle,
                           GameOptions::fullscreen,
                           GameOptions::antiAliasingLevel);
-        
+    
     // Use a view to make the game resolution independant
     CView theView(CFloatRect(GameOptions::viewLeft, GameOptions::viewTop,
                              GameOptions::viewWidth, GameOptions::viewHeight));
-
+    
     // If we want to preserve the games original aspect ratio then set a viewport
     if (GameOptions::preserveAspect)
     {
@@ -93,10 +112,10 @@ void CGame::Init(CGameLocation *initialGameLocation)
         float vpTop = 0.0f;
         float vpWidth = 1.0f;
         float vpHeight = 1.0f;
-
+        
         float windowAspect = (float) GameOptions::windowWidth / (float) GameOptions::windowHeight;
         float viewAspect = GameOptions::viewWidth / GameOptions::viewHeight;
-
+        
         if (windowAspect > viewAspect)
         {
             // The window aspect is wider than the view aspect
@@ -107,7 +126,7 @@ void CGame::Init(CGameLocation *initialGameLocation)
             float vpWidthPx = GameOptions::viewWidth * percent;
             // Now work out what percent of the window width this is
             vpWidth = vpWidthPx / (float) GameOptions::windowWidth;
-
+            
             // Now work out how far along the window we need to put this is order to center it
             vpLeft = (1.0f - vpWidth) / 2.0f;
         }
@@ -120,11 +139,11 @@ void CGame::Init(CGameLocation *initialGameLocation)
             vpHeight = vpHeightPx / (float) GameOptions::windowHeight;
             vpTop = (1.0f - vpHeight) / 2.0f;
         }
-
+        
         theView.setViewport(CFloatRect(vpLeft, vpTop, vpWidth, vpHeight));
     }
-
-
+    
+    
     mWindow->setView(theView);
     
     if ((GameOptions::windowWidth * 1.0f) / GameOptions::windowHeight
@@ -136,23 +155,15 @@ void CGame::Init(CGameLocation *initialGameLocation)
     // Initialise other systems
     SystemUtilities::Init(mWindow);
     SFMLInitialiser::InitSFML(mWindow);
-    
-    // Create and register any lifetime objects
-#if TGL_DEBUG
-    theDebugHelper = new CDebugHelper();
-#endif
-    
-    // Enter the initial location
-    PushGameLocation(initialGameLocation);
 }
 
 // =============================================================================
 // CGame::InitialiseOptions
-// Initialise any game options, called after the config file is read
+// Initialise any game options
 // -----------------------------------------------------------------------------
 void CGame::InitialiseOptions()
 {
-    // Do nothing, this is game specific
+    GameOptions::ReadConfig();
 }
 
 // =============================================================================

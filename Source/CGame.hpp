@@ -48,6 +48,8 @@ public:
     
     // Initialise the game
     virtual void Init(CGameLocation *initialGameLocation);
+    // Create the game window with any options (aa, vsync, etc)
+    virtual void CreateWindow();
     // Initialise any options
     virtual void InitialiseOptions();
     // Enter the main loop, returns program exit code
