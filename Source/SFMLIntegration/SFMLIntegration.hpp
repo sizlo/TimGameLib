@@ -35,6 +35,7 @@
 #include "CWindow.hpp"
 #include "CView.hpp"
 #include "CVertex.hpp"
+#include "CVideoMode.hpp"
 
 #include "../GameOptions.hpp"
 
