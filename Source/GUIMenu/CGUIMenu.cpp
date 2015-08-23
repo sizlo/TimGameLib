@@ -22,7 +22,10 @@ CGUIMenu::~CGUIMenu()
 
 void CGUIMenu::Update(CTime elapsedTime)
 {
-    
+    for (auto w: mWidgets)
+    {
+        w->Update(elapsedTime);
+    }
 }
 
 void CGUIMenu::Draw(CWindow *theWindow)
