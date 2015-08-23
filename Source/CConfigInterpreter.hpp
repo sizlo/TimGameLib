@@ -10,6 +10,7 @@ public:
     ~CConfigInterpreter();
     
     void Parse();
+    void Write();
 };
 
 #endif // __TimGameLib__CConfigInterpreter__
