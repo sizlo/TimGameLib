@@ -120,3 +120,5 @@ list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/Tweening/Easings/Si
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/Tweening/Easings/Sine.hpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/Tweening/CTweener.cpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/Tweening/CTweener.hpp)
+list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/CInput.cpp)
+list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/CInput.hpp)
