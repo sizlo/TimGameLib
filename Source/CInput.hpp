@@ -21,6 +21,8 @@ public:
     bool WasPressedInEvent(CEvent theEvent);
     bool WasReleasedInEvent(CEvent theEvent);
     
+    std::string GetAsString();
+    
 private:
     EInputType mType;
     CKeyboard::Key mKey;
