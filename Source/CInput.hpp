@@ -21,6 +21,9 @@ public:
     bool WasPressedInEvent(CEvent theEvent);
     bool WasReleasedInEvent(CEvent theEvent);
     
+    EInputType GetType();
+    int GetCode();
+    
     bool Equals(const CInput &other) const;
     std::string AsString();
     

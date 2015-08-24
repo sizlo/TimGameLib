@@ -86,6 +86,8 @@ list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/CXMLInterpreter.cpp
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/CXMLInterpreter.hpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/CConfigInterpreter.cpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/CConfigInterpreter.hpp)
+list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/CInputListInterpreter.cpp)
+list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/CInputListInterpreter.hpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/GUIMenu/CButtonWidget.cpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/GUIMenu/CButtonWidget.hpp)
 list(APPEND TIM_GAME_LIB_SOURCES ${TIM_GAME_LIB_ROOT}/Source/GUIMenu/CGUIMenu.cpp)

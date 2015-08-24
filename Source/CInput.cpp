@@ -73,6 +73,20 @@ bool CInput::WasReleasedInEvent(CEvent theEvent)
     return wasReleased;
 }
 
+EInputType CInput::GetType()
+{
+    return mType;
+}
+
+int CInput::GetCode()
+{
+    switch (mType)
+    {
+        case kKeyboardInput: return mKey;
+        case kMouseInput: return mButton;
+    }
+}
+
 bool CInput::Equals(const CInput &other) const
 {
     return this->mType == other.mType &&
