@@ -21,7 +21,7 @@ public:
     bool WasPressedInEvent(CEvent theEvent);
     bool WasReleasedInEvent(CEvent theEvent);
     
-    std::string GetAsString();
+    std::string AsString();
     
 private:
     EInputType mType;

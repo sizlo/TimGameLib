@@ -71,7 +71,7 @@ bool CInput::WasReleasedInEvent(CEvent theEvent)
     return wasReleased;
 }
 
-std::string CInput::GetAsString()
+std::string CInput::AsString()
 {
     std::string theString;
     
