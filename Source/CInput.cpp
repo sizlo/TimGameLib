@@ -1,6 +1,6 @@
 #include "CInput.hpp"
 
-CInput::CInput()
+CInput::CInput() : CInput(CKeyboard::Unknown)
 {
     
 }
@@ -9,12 +9,14 @@ CInput::CInput(CKeyboard::Key theKey)
 {
     mType = kKeyboardInput;
     mKey = theKey;
+    mButton = CMouse::ButtonCount;
 }
 
 CInput::CInput(CMouse::Button theButton)
 {
     mType = kMouseInput;
     mButton = theButton;
+    mKey = CKeyboard::Unknown;
 }
 
 CInput::~CInput()
@@ -69,6 +71,13 @@ bool CInput::WasReleasedInEvent(CEvent theEvent)
     }
     
     return wasReleased;
+}
+
+bool CInput::Equals(const CInput &other) const
+{
+    return this->mType == other.mType &&
+           this->mType == kKeyboardInput ? this->mKey == other.mKey
+                                         : this->mButton == other.mButton;
 }
 
 std::string CInput::AsString()
@@ -199,4 +208,13 @@ std::string CInput::AsString()
     }
     
     return theString;
+}
+
+bool operator==(const CInput& lhs, const CInput& rhs)
+{
+    return lhs.Equals(rhs);
+}
+bool operator!=(const CInput& lhs, const CInput& rhs)
+{
+    return !(lhs == rhs);
 }

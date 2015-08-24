@@ -21,6 +21,7 @@ public:
     bool WasPressedInEvent(CEvent theEvent);
     bool WasReleasedInEvent(CEvent theEvent);
     
+    bool Equals(const CInput &other) const;
     std::string AsString();
     
 private:
@@ -28,5 +29,8 @@ private:
     CKeyboard::Key mKey;
     CMouse::Button mButton;
 };
+
+bool operator ==(const CInput& left, const CInput& right);
+bool operator !=(const CInput& left, const CInput& right);
 
 #endif // __TimGameLib__CInput__
