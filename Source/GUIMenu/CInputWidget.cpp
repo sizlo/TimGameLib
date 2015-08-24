@@ -127,6 +127,13 @@ void CInputWidget::StopCapturing()
 
 void CInputWidget::TrySetNewInput(CInput theNewInput)
 {
+    // If we hit escape cancel the capture
+    if (theNewInput == CInput(CKeyboard::Escape))
+    {
+        StopCapturing();
+        return;
+    }
+    
     bool isDisallowed = false;
     for (auto i: mDisallowedInputs)
     {
