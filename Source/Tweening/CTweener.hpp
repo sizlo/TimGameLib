@@ -17,10 +17,12 @@ public:
     float GetCurrentValue();
     CTime GetCurrentTime();
     CTime GetDuration();
-    
+    void SetReversible(bool reversible);
     bool IsDone();
     
 private:
+    void Reverse();
+    
     TEasingFunction mEasingFunction;
     CTime mDuration;
     float mStartValue;
@@ -28,6 +30,7 @@ private:
     float mRange;
     CTime mCurrentTime;
     float mCurrentValue;
+    bool mReversible;
 };
 
 #endif // __TimGameLib__CTweener__

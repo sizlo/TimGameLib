@@ -14,6 +14,7 @@ CTweener::CTweener(TEasingFunction theFunction, float startValue, float endValue
     mEndValue = endValue;
     mRange = endValue - startValue;
     mDuration = duration;
+    mReversible = false;
     Reset();
 }
 
@@ -31,6 +32,11 @@ void CTweener::Reset()
 float CTweener::Advance(CTime elapsedTime)
 {
     mCurrentTime += elapsedTime;
+    if (mCurrentTime > mDuration && mReversible)
+    {
+        Reverse();
+    }
+    
     if (mCurrentTime < CTime::Zero)
     {
         mCurrentValue = mStartValue;
@@ -61,7 +67,21 @@ CTime CTweener::GetDuration()
     return mDuration;
 }
 
+void CTweener::SetReversible(bool reversible)
+{
+    mReversible = reversible;
+}
+
 bool CTweener::IsDone()
 {
     return mCurrentTime >= mDuration;
+}
+
+void CTweener::Reverse()
+{
+    mCurrentTime -= mDuration;
+    float temp = mStartValue;
+    mStartValue = mEndValue;
+    mEndValue = temp;
+    mRange = mEndValue - mStartValue;
 }
