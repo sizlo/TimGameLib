@@ -34,7 +34,7 @@ bool CXMLInterpreter::LoadFile()
     
     if (theResult.status != pugi::status_ok)
     {
-        DEBUG_LOG("Error parsisng config xml file: %s", mFilename.c_str());
+        DEBUG_LOG("Error parsisng xml file: %s", mFilename.c_str());
         DEBUG_LOG("Status code: %d", theResult.status);
         return false;
     }
